@@ -2,8 +2,12 @@
 
 [ext_resource type="Texture2D" path="res://Elesis/images/character/elesis_shop.png" id="1_shop"]
 
-[node name="ElesisShopVisual" type="Sprite2D"]
+[node name="ElesisShopVisual" type="Node2D"]
+
+[node name="Visuals" type="Sprite2D" parent="."]
 texture = ExtResource("1_shop")
 centered = true
 offset = Vector2(0, -340)
 scale = Vector2(0.38, 0.38)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
