@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Elesis/images/character/elesis_combat.png" id="1_combat"]
+
+[node name="ElesisCombatVisual" type="Sprite2D"]
+texture = ExtResource("1_combat")
+centered = true
+offset = Vector2(0, -340)
+scale = Vector2(0.38, 0.38)

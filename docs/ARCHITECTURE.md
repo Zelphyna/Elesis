@@ -7,7 +7,8 @@
 - `Elesis/`: Godot resources, localization, and runtime assets included in the `.pck`.
 - `ElesisCode/`: C# mod code.
 - `ElesisCode/MainFile.cs`: mod initializer; registers the custom Elesis character with BaseLib.
-- `ElesisCode/Character/Elesis.cs`: custom character model. Elesis intentionally extends `CustomCharacterModel`, matching the working Hologirl mod pattern; `PlaceholderCharacterModel` retained vanilla fallback icon behavior and made character selection unreliable. Elesis uses the same safe Ironclad audio, transition, visual, trail, and energy-counter fallbacks as Hologirl until custom STS2-safe assets/events exist.
+- `ElesisCode/Character/Elesis.cs`: custom character model. Elesis intentionally extends `CustomCharacterModel`, matching the working Hologirl mod pattern; `PlaceholderCharacterModel` retained vanilla fallback icon behavior and made character selection unreliable. Elesis uses generated static Sprite2D scenes for combat, merchant, and rest-site visuals, with Ironclad fallbacks retained for audio, transition, trail, and energy-counter assets until custom STS2-safe replacements exist.
+- `Elesis/scenes/creature_visuals/`, `Elesis/scenes/merchant/`, and `Elesis/scenes/rest_site/`: static Sprite2D scenes used by BaseLib's character scene conversion hooks.
 - `ElesisCode/Relics/BelderKnightEmblem.cs`: starter relic used so character selection and run start have an Elesis-owned relic model to display and equip.
 - `scripts/`: build, package, and release helpers.
 

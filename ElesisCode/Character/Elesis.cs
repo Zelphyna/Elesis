@@ -28,7 +28,9 @@ public class Elesis : CustomCharacterModel
     public override string CustomCastSfx => "event:/sfx/characters/ironclad/ironclad_cast";
     public override string CustomDeathSfx => "event:/sfx/characters/ironclad/ironclad_die";
     public override string CustomCharacterSelectTransitionPath => "res://materials/transitions/ironclad_transition_mat.tres";
-    public override string CustomVisualPath => "res://scenes/creature_visuals/ironclad.tscn";
+    public override string CustomVisualPath => $"{MainFile.ResPath}/scenes/creature_visuals/elesis_combat.tscn";
+    public override string CustomMerchantAnimPath => $"{MainFile.ResPath}/scenes/merchant/elesis_shop.tscn";
+    public override string CustomRestSiteAnimPath => $"{MainFile.ResPath}/scenes/rest_site/elesis_rest.tscn";
     public override string CustomTrailPath => "res://scenes/vfx/card_trail_ironclad.tscn";
     public override string CustomEnergyCounterPath => "res://scenes/combat/energy_counters/ironclad_energy_counter.tscn";
 
