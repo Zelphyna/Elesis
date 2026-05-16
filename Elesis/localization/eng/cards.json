@@ -1,0 +1,6 @@
+{
+  "ELESIS-ELESIS_STRIKE.title": "Strike",
+  "ELESIS-ELESIS_STRIKE.description": "Deal {Damage:diff()} damage.",
+  "ELESIS-ELESIS_DEFEND.title": "Defend",
+  "ELESIS-ELESIS_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold]."
+}

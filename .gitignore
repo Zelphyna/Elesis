@@ -1,0 +1,14 @@
+.godot/
+bin/
+/android/
+.git/
+.idea/
+.vs/
+publish/
+dist/
+Properties/
+packages/
+.editorconfig
+*.user
+scripts/*.gd.uid
+Directory.Build.props

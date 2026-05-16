@@ -1,0 +1,16 @@
+{
+  "ELESIS-ELESIS.title": "Elesis",
+  "ELESIS-ELESIS.titleObject": "Elesis",
+  "ELESIS-ELESIS.description": "A barebones custom character.",
+  "ELESIS-ELESIS.pronounSubject": "they",
+  "ELESIS-ELESIS.pronounObject": "them",
+  "ELESIS-ELESIS.pronounPossessive": "theirs",
+  "ELESIS-ELESIS.possessiveAdjective": "their",
+  "ELESIS-ELESIS.goldMonologue": "...",
+  "ELESIS-ELESIS.eventDeathPrevention": "...",
+  "ELESIS-ELESIS.aromaPrinciple": "...",
+  "ELESIS-ELESIS.cardsModifierTitle": "Elesis Cards",
+  "ELESIS-ELESIS.cardsModifierDescription": "Elesis cards will now appear in rewards and shops.",
+  "ELESIS-ELESIS.banter.alive.endTurnPing": "...",
+  "ELESIS-ELESIS.banter.dead.endTurnPing": "..."
+}
