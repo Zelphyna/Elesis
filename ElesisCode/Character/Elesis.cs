@@ -46,7 +46,7 @@ public class Elesis : CustomCharacterModel
     }
 
     public override string CustomIconPath => SceneHelper.GetScenePath("ui/character_icons/ironclad_icon");
-    public override string CustomIconOutlineTexturePath => "elesis_map_marker.png".CharacterUiPath();
+    public override string CustomIconOutlineTexturePath => "elesis_icon.png".CharacterUiPath();
     public override string CustomArmPointingTexturePath => ImageHelper.GetImagePath("ui/hands/multiplayer_hand_ironclad_point.png");
     public override string CustomArmRockTexturePath => ImageHelper.GetImagePath("ui/hands/multiplayer_hand_ironclad_rock.png");
     public override string CustomArmPaperTexturePath => ImageHelper.GetImagePath("ui/hands/multiplayer_hand_ironclad_paper.png");
@@ -79,5 +79,5 @@ public class Elesis : CustomCharacterModel
     public override string CustomCharacterSelectIconPath => "elesis_select.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "elesis_select_locked.png".CharacterUiPath();
     public override string CustomCharacterSelectBg => $"{MainFile.ResPath}/scenes/character_select/elesis_character_select_bg.tscn";
-    public override string CustomMapMarkerPath => "elesis_map_marker.png".CharacterUiPath();
+    public override string CustomMapMarkerPath => "elesis_icon.png".CharacterUiPath();
 }
