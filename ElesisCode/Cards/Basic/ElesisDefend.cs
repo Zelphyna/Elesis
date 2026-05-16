@@ -22,6 +22,7 @@ public sealed class ElesisDefend() : ElesisCard(1, CardType.Skill, CardRarity.Ba
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        await ElesisMechanics.GainChivalry(Owner.Creature, 1m, this);
     }
 
     protected override void OnUpgrade()

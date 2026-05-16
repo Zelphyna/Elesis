@@ -6,5 +6,6 @@ Confirmed design direction:
 - Avoid advanced Elsword class-path details such as Grand Master, Blazing Heart, Bloody Queen, Empire Sword, or Flame Lord.
 - Visual style should be simplified and adapted to Slay the Spire 2: dark fantasy, painterly, readable silhouettes, rough brush texture, and controlled crimson accents.
 - Gameplay identity should start from sword-focused offense with restrained fire motifs, not from full evolution-class spectacle.
+- The first implemented card pool uses prototype-safe card effects grouped by Vitality, Destruction, Flame, and Parry. Chivalry and Flame are implemented as counter powers; Parry is still a design label for efficient defensive cards.
 
 Do not treat generated art attempts as final until one is explicitly selected as the project asset.

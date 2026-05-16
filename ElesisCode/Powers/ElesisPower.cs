@@ -7,8 +7,8 @@ namespace Elesis.ElesisCode.Powers;
 
 public abstract class ElesisPower : CustomPowerModel
 {
-    public override string CustomPackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
-    public override string CustomBigIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
+    public override string CustomPackedIconPath => "power.png".PowerImagePath();
+    public override string CustomBigIconPath => "power.png".BigPowerImagePath();
 
     public abstract override PowerType Type { get; }
     public abstract override PowerStackType StackType { get; }
