@@ -14,5 +14,6 @@ Confirmed design direction:
 - Map marker art currently uses the previous larger Elesis marker because it reads better in-game than the experimental silhouette pass.
 - Combat, shop, and rest-site character art use transparent sprite assets with bottom-aligned scene placement. Combat art leans more chibi/readable than the larger menu illustrations so her feet align cleanly with other player visuals.
 - Card portraits use the combat chibi Elesis as a shared readable character motif. Attack portraits lean red with slash/flame shapes, Skill portraits lean blue with guard/movement shapes, and Power portraits use warmer mystical crest effects.
+- Compendium and run/top-panel icon art uses only Elesis' chibi head. Map movement art uses a compact red-and-gold Elesis pin with a small flame accent.
 
 Do not treat generated art attempts as final until one is explicitly selected as the project asset.
