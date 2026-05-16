@@ -7,7 +7,7 @@
 - `Elesis/`: Godot resources, localization, and runtime assets included in the `.pck`.
 - `ElesisCode/`: C# mod code.
 - `ElesisCode/MainFile.cs`: mod initializer; registers the custom Elesis character with BaseLib.
-- `ElesisCode/Character/Elesis.cs`: custom character model. Elesis intentionally extends `CustomCharacterModel`, matching the working Hologirl mod pattern; `PlaceholderCharacterModel` retained vanilla fallback icon behavior and made character selection unreliable.
+- `ElesisCode/Character/Elesis.cs`: custom character model. Elesis intentionally extends `CustomCharacterModel`, matching the working Hologirl mod pattern; `PlaceholderCharacterModel` retained vanilla fallback icon behavior and made character selection unreliable. `CharacterSelectSfx` is intentionally empty until a valid STS2 audio event exists, because the generated default path can interrupt selection.
 - `scripts/`: build, package, and release helpers.
 
 ## Build Flow

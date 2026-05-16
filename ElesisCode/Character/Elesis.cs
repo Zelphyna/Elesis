@@ -21,6 +21,7 @@ public class Elesis : CustomCharacterModel
     public override int StartingHp => 70;
     public override bool HideFromVanillaCharacterSelect => false;
     public override bool AllowInVanillaRandomCharacterSelect => true;
+    public override string CharacterSelectSfx => "";
 
     public override IEnumerable<CardModel> StartingDeck => [
         ModelDb.Card<ElesisStrike>(),
