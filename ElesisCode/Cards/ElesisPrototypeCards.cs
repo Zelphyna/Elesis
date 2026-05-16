@@ -161,6 +161,28 @@ public abstract class ElesisAttackBlockCard(
 }
 
 [Pool(typeof(ElesisCardPool))]
+public abstract class ElesisPowerCard(
+    int cost,
+    CardRarity rarity,
+    decimal chivalryGain = 0m,
+    decimal flameGain = 0m,
+    ElesisStyle style = ElesisStyle.None) :
+    ElesisCard(cost, CardType.Power, rarity, TargetType.Self)
+{
+    protected override IEnumerable<CardKeyword> ElesisCardKeywords => ElesisKeywords.For(style, chivalryGain, flameGain);
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await ElesisMechanics.GainChivalry(Owner.Creature, chivalryGain, this);
+        await ElesisMechanics.GainFlame(Owner.Creature, flameGain, this);
+        if (style == ElesisStyle.Vitality)
+        {
+            await ElesisMechanics.ResolveVitalityThreshold(choiceContext, Owner);
+        }
+    }
+}
+
+[Pool(typeof(ElesisCardPool))]
 public sealed class QuickStep() : ElesisBlockCard(0, CardRarity.Basic, 3m, 3m, ElesisStyle.Vitality, chivalryGain: 1m);
 
 [Pool(typeof(ElesisCardPool))]
@@ -194,7 +216,7 @@ public sealed class FlameTap() : ElesisAttackCard(0, CardRarity.Common, 3m, 4m, 
 public sealed class ClaymoreArc() : ElesisAttackCard(2, CardRarity.Basic, 15m, 5m, ElesisStyle.Destruction);
 
 [Pool(typeof(ElesisCardPool))]
-public sealed class BelderDiscipline() : ElesisBlockCard(2, CardRarity.Common, 13m, 5m);
+public sealed class BelderDiscipline() : ElesisPowerCard(1, CardRarity.Common, chivalryGain: 3m, flameGain: 1m, ElesisStyle.Vitality);
 
 [Pool(typeof(ElesisCardPool))]
 public sealed class DestructionBlow() : ElesisAttackCard(2, CardRarity.Uncommon, 18m, 7m, ElesisStyle.Destruction);
@@ -206,7 +228,7 @@ public sealed class VitalityRush() : ElesisAttackBlockCard(1, CardRarity.Uncommo
 public sealed class FlameGuard() : ElesisAttackBlockCard(1, CardRarity.Uncommon, 6m, 8m, 3m, 3m, ElesisStyle.Flame, flameGain: 2m);
 
 [Pool(typeof(ElesisCardPool))]
-public sealed class CounterStance() : ElesisBlockCard(1, CardRarity.Uncommon, 10m, 4m, ElesisStyle.Parry, chivalryGain: 1m);
+public sealed class CounterStance() : ElesisPowerCard(1, CardRarity.Uncommon, chivalryGain: 2m, flameGain: 2m, ElesisStyle.Parry);
 
 [Pool(typeof(ElesisCardPool))]
 public sealed class SpiralBlade() : ElesisAttackCard(2, CardRarity.Uncommon, 21m, 6m, ElesisStyle.Destruction);
@@ -260,7 +282,7 @@ public sealed class ScarletJudgment() : ElesisAttackCard(3, CardRarity.Rare, 40m
 public sealed class KnightCaptain() : ElesisBlockCard(1, CardRarity.Rare, 14m, 7m, ElesisStyle.Vitality, chivalryGain: 3m);
 
 [Pool(typeof(ElesisCardPool))]
-public sealed class BurningResolve() : ElesisAttackBlockCard(2, CardRarity.Rare, 16m, 16m, 6m, 6m, ElesisStyle.Flame, flameGain: 3m);
+public sealed class BurningResolve() : ElesisPowerCard(1, CardRarity.Rare, chivalryGain: 2m, flameGain: 4m, ElesisStyle.Flame);
 
 [Pool(typeof(ElesisCardPool))]
 public sealed class ElLadyEcho() : ElesisAttackCard(2, CardRarity.Rare, 28m, 9m);
