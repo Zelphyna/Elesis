@@ -1,5 +1,4 @@
 using BaseLib.Abstracts;
-using BaseLib.Utils.NodeFactories;
 using Elesis.ElesisCode.Cards;
 using Elesis.ElesisCode.Cards.Basic;
 using Elesis.ElesisCode.Extensions;
@@ -35,6 +34,12 @@ public class Elesis : CustomCharacterModel
     public override string CustomRestSiteAnimPath => $"{MainFile.ResPath}/scenes/rest_site/elesis_rest.tscn";
     public override string CustomTrailPath => "res://scenes/vfx/card_trail_ironclad.tscn";
     public override string CustomEnergyCounterPath => $"{MainFile.ResPath}/scenes/combat/elesis_energy_counter.tscn";
+    public override string CustomIconPath => SceneHelper.GetScenePath("ui/character_icons/ironclad_icon");
+    public override string CustomIconOutlineTexturePath => ImageHelper.GetImagePath("ui/top_panel/character_icon_ironclad_outline.png");
+    public override string CustomArmPointingTexturePath => ImageHelper.GetImagePath("ui/hands/multiplayer_hand_ironclad_point.png");
+    public override string CustomArmRockTexturePath => ImageHelper.GetImagePath("ui/hands/multiplayer_hand_ironclad_rock.png");
+    public override string CustomArmPaperTexturePath => ImageHelper.GetImagePath("ui/hands/multiplayer_hand_ironclad_paper.png");
+    public override string CustomArmScissorsTexturePath => ImageHelper.GetImagePath("ui/hands/multiplayer_hand_ironclad_scissors.png");
 
     public override IEnumerable<CardModel> StartingDeck => [
         ModelDb.Card<ElesisStrike>(),
@@ -58,16 +63,6 @@ public class Elesis : CustomCharacterModel
     public override CardPoolModel CardPool => ModelDb.CardPool<ElesisCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<ElesisRelicPool>();
     public override PotionPoolModel PotionPool => ModelDb.PotionPool<ElesisPotionPool>();
-
-    public override Control CustomIcon
-    {
-        get
-        {
-            var icon = NodeFactory<Control>.CreateFromResource(CustomIconTexturePath);
-            icon.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
-            return icon;
-        }
-    }
 
     public override string CustomIconTexturePath => "elesis_icon.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "elesis_select.png".CharacterUiPath();
