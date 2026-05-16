@@ -11,9 +11,13 @@ namespace Elesis.ElesisCode.Cards;
 public abstract class ElesisCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => ElesisCardKeywords;
+
     public override string CustomPortraitPath => CardImageFileName.BigCardImagePath();
     public override string PortraitPath => CardImageFileName.CardImagePath();
     public override string BetaPortraitPath => CardImageFileName.CardImagePath();
+
+    protected virtual IEnumerable<CardKeyword> ElesisCardKeywords => [];
 
     private string CardImageFileName => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png";
 }

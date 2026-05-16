@@ -18,6 +18,7 @@ public sealed class ElesisDefend() : ElesisCard(1, CardType.Skill, CardRarity.Ba
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5m, ValueProp.Move)];
+    protected override IEnumerable<CardKeyword> ElesisCardKeywords => [ElesisKeywords.Chivalry];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

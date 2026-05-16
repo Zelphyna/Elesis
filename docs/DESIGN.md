@@ -8,5 +8,7 @@ Confirmed design direction:
 - Gameplay identity should start from sword-focused offense with restrained fire motifs, not from full evolution-class spectacle.
 - The first implemented card pool uses prototype-safe card effects grouped by Vitality, Destruction, Flame, and Parry. Chivalry and Flame are implemented as counter powers; Parry is still a design label for efficient defensive cards.
 - Card portraits have a first functional art pass. The 40 implemented cards each have runtime and big portrait PNGs named after their card IDs, with source art grouped by current mechanics and rarity beats.
+- Character selection uses a Belder/Velder fortress backdrop with Elesis shown from head to mid-thigh, while the clickable selector icon stays focused on her head and shoulders.
+- The starter relic visual is the Belder Knight Emblem: a red-and-gold knight crest with a claymore motif, matching her red knight identity.
 
 Do not treat generated art attempts as final until one is explicitly selected as the project asset.

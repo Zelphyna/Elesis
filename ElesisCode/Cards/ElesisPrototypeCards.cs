@@ -22,6 +22,7 @@ public abstract class ElesisAttackCard(
     ElesisCard(cost, CardType.Attack, rarity, TargetType.AnyEnemy)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(damage, ValueProp.Move)];
+    protected override IEnumerable<CardKeyword> ElesisCardKeywords => ElesisKeywords.For(style, chivalryGain, flameGain);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -74,6 +75,7 @@ public abstract class ElesisBlockCard(
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(block, ValueProp.Move)];
+    protected override IEnumerable<CardKeyword> ElesisCardKeywords => ElesisKeywords.For(style, chivalryGain, flameGain);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -120,6 +122,7 @@ public abstract class ElesisAttackBlockCard(
         new DamageVar(damage, ValueProp.Move),
         new BlockVar(block, ValueProp.Move)
     ];
+    protected override IEnumerable<CardKeyword> ElesisCardKeywords => ElesisKeywords.For(style, chivalryGain, flameGain);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

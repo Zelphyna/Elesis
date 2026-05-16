@@ -16,6 +16,7 @@ public sealed class ElesisStrike() : ElesisCard(1, CardType.Attack, CardRarity.B
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6m, ValueProp.Move)];
+    protected override IEnumerable<CardKeyword> ElesisCardKeywords => [ElesisKeywords.Chivalry];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
