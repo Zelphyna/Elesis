@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Models.Relics;
 
 namespace Elesis.ElesisCode.Character;
 
-public class Elesis : PlaceholderCharacterModel
+public class Elesis : CustomCharacterModel
 {
     public const string CharacterId = "Elesis";
 
@@ -34,6 +34,8 @@ public class Elesis : PlaceholderCharacterModel
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics => [];
+
+    public override List<string> GetArchitectAttackVfx() => [];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<ElesisCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<ElesisRelicPool>();
