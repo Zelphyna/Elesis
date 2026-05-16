@@ -161,7 +161,7 @@ public abstract class ElesisAttackBlockCard(
 }
 
 [Pool(typeof(ElesisCardPool))]
-public sealed class QuickStep() : ElesisBlockCard(0, CardRarity.Common, 3m, 3m, ElesisStyle.Vitality, chivalryGain: 1m);
+public sealed class QuickStep() : ElesisBlockCard(0, CardRarity.Basic, 3m, 3m, ElesisStyle.Vitality, chivalryGain: 1m);
 
 [Pool(typeof(ElesisCardPool))]
 public sealed class RedTempo() : ElesisAttackCard(0, CardRarity.Common, 4m, 3m, ElesisStyle.Vitality, chivalryGain: 1m);
@@ -191,7 +191,7 @@ public sealed class VitalLunge() : ElesisAttackBlockCard(1, CardRarity.Common, 6
 public sealed class FlameTap() : ElesisAttackCard(0, CardRarity.Common, 3m, 4m, ElesisStyle.Flame, flameGain: 1m);
 
 [Pool(typeof(ElesisCardPool))]
-public sealed class ClaymoreArc() : ElesisAttackCard(2, CardRarity.Common, 15m, 5m, ElesisStyle.Destruction);
+public sealed class ClaymoreArc() : ElesisAttackCard(2, CardRarity.Basic, 15m, 5m, ElesisStyle.Destruction);
 
 [Pool(typeof(ElesisCardPool))]
 public sealed class BelderDiscipline() : ElesisBlockCard(2, CardRarity.Common, 13m, 5m);
