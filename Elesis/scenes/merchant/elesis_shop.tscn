@@ -7,7 +7,7 @@
 [node name="Visuals" type="Sprite2D" parent="."]
 texture = ExtResource("1_shop")
 centered = true
-offset = Vector2(0, -340)
-scale = Vector2(0.38, 0.38)
+offset = Vector2(0, -140)
+scale = Vector2(0.28, 0.28)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -5,5 +5,5 @@
 [node name="ElesisRestVisual" type="Sprite2D"]
 texture = ExtResource("1_rest")
 centered = true
-offset = Vector2(0, -280)
-scale = Vector2(0.168, 0.168)
+offset = Vector2(0, -125)
+scale = Vector2(0.33, 0.33)

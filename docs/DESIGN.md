@@ -12,5 +12,6 @@ Confirmed design direction:
 - The starter relic visual is the Belder Knight Emblem: a red-and-gold knight crest with a claymore motif, matching her red knight identity.
 - Energy UI uses a red crystal-and-gold knight orb. Chivalry uses a red-gold sword crest power icon, and Flame uses a sharper red-orange sword-flame crest icon.
 - Map marker art currently uses the previous larger Elesis marker because it reads better in-game than the experimental silhouette pass.
+- Combat, shop, and rest-site character art use transparent sprite assets with bottom-aligned scene placement. Combat art leans more chibi/readable than the larger menu illustrations so her feet align cleanly with other player visuals.
 
 Do not treat generated art attempts as final until one is explicitly selected as the project asset.
