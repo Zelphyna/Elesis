@@ -6,6 +6,7 @@ using Elesis.ElesisCode.Extensions;
 using Elesis.ElesisCode.Relics;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
@@ -30,10 +31,10 @@ public class Elesis : CustomCharacterModel
     public override string CustomDeathSfx => "event:/sfx/characters/ironclad/ironclad_die";
     public override string CustomCharacterSelectTransitionPath => "res://materials/transitions/ironclad_transition_mat.tres";
     public override string CustomVisualPath => $"{MainFile.ResPath}/scenes/creature_visuals/elesis_combat.tscn";
-    public override string CustomMerchantAnimPath => $"{MainFile.ResPath}/scenes/merchant/elesis_shop.tscn";
+    public override string CustomMerchantAnimPath => SceneHelper.GetScenePath("merchant/characters/ironclad_merchant");
     public override string CustomRestSiteAnimPath => $"{MainFile.ResPath}/scenes/rest_site/elesis_rest.tscn";
     public override string CustomTrailPath => "res://scenes/vfx/card_trail_ironclad.tscn";
-    public override string CustomEnergyCounterPath => "res://scenes/combat/energy_counters/ironclad_energy_counter.tscn";
+    public override string CustomEnergyCounterPath => $"{MainFile.ResPath}/scenes/combat/elesis_energy_counter.tscn";
 
     public override IEnumerable<CardModel> StartingDeck => [
         ModelDb.Card<ElesisStrike>(),

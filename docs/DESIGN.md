@@ -11,5 +11,6 @@ Confirmed design direction:
 - Character selection uses a Belder/Velder fortress backdrop with Elesis shown from head to mid-thigh, while the clickable selector icon stays focused on her head and shoulders.
 - The starter relic visual is the Belder Knight Emblem: a red-and-gold knight crest with a claymore motif, matching her red knight identity.
 - Energy UI uses a red crystal-and-gold knight orb. Chivalry uses a red-gold sword crest power icon, and Flame uses a sharper red-orange sword-flame crest icon.
+- Map marker art should stay minimal: Elesis should read as a bust/head silhouette rather than a detailed portrait.
 
 Do not treat generated art attempts as final until one is explicitly selected as the project asset.
