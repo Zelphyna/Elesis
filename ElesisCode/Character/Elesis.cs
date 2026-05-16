@@ -2,6 +2,7 @@ using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
 using Elesis.ElesisCode.Cards.Basic;
 using Elesis.ElesisCode.Extensions;
+using Elesis.ElesisCode.Relics;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
@@ -22,6 +23,14 @@ public class Elesis : CustomCharacterModel
     public override bool HideFromVanillaCharacterSelect => false;
     public override bool AllowInVanillaRandomCharacterSelect => true;
     public override string CharacterSelectSfx => "";
+    public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
+    public override string CustomAttackSfx => "event:/sfx/characters/ironclad/ironclad_attack";
+    public override string CustomCastSfx => "event:/sfx/characters/ironclad/ironclad_cast";
+    public override string CustomDeathSfx => "event:/sfx/characters/ironclad/ironclad_die";
+    public override string CustomCharacterSelectTransitionPath => "res://materials/transitions/ironclad_transition_mat.tres";
+    public override string CustomVisualPath => "res://scenes/creature_visuals/ironclad.tscn";
+    public override string CustomTrailPath => "res://scenes/vfx/card_trail_ironclad.tscn";
+    public override string CustomEnergyCounterPath => "res://scenes/combat/energy_counters/ironclad_energy_counter.tscn";
 
     public override IEnumerable<CardModel> StartingDeck => [
         ModelDb.Card<ElesisStrike>(),
@@ -34,7 +43,9 @@ public class Elesis : CustomCharacterModel
         ModelDb.Card<ElesisDefend>()
     ];
 
-    public override IReadOnlyList<RelicModel> StartingRelics => [];
+    public override IReadOnlyList<RelicModel> StartingRelics => [
+        ModelDb.Relic<BelderKnightEmblem>()
+    ];
 
     public override List<string> GetArchitectAttackVfx() => [];
 
