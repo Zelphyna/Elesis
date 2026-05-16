@@ -10,6 +10,6 @@ Confirmed design direction:
 - Card portraits have a first functional art pass. The 40 implemented cards each have runtime and big portrait PNGs named after their card IDs, with source art grouped by current mechanics and rarity beats.
 - Character selection uses a Belder/Velder fortress backdrop with Elesis shown from head to mid-thigh, while the clickable selector icon stays focused on her head and shoulders.
 - The starter relic visual is the Belder Knight Emblem: a red-and-gold knight crest with a claymore motif, matching her red knight identity.
-- Energy UI uses a red crystal-and-gold knight orb, while Chivalry uses a separate red-gold sword crest power icon.
+- Energy UI uses a red crystal-and-gold knight orb. Chivalry uses a red-gold sword crest power icon, and Flame uses a sharper red-orange sword-flame crest icon.
 
 Do not treat generated art attempts as final until one is explicitly selected as the project asset.
