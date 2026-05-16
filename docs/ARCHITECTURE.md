@@ -6,6 +6,7 @@
 - `Elesis.csproj`: C# project and BaseLib dependency setup.
 - `Elesis/`: Godot resources, localization, and runtime assets included in the `.pck`.
 - `ElesisCode/`: C# mod code.
+- `ElesisCode/MainFile.cs`: mod initializer; registers the custom Elesis character with BaseLib.
 - `scripts/`: build, package, and release helpers.
 
 ## Build Flow
