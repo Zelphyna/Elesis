@@ -11,8 +11,9 @@ namespace Elesis.ElesisCode.Cards;
 public abstract class ElesisCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
-    // Prototype card art is shared until each Elesis card has dedicated art.
-    public override string CustomPortraitPath => "card.png".BigCardImagePath();
-    public override string PortraitPath => "card.png".CardImagePath();
-    public override string BetaPortraitPath => "card.png".CardImagePath();
+    public override string CustomPortraitPath => CardImageFileName.BigCardImagePath();
+    public override string PortraitPath => CardImageFileName.CardImagePath();
+    public override string BetaPortraitPath => CardImageFileName.CardImagePath();
+
+    private string CardImageFileName => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png";
 }

@@ -13,6 +13,7 @@
 
 - `scripts/build.sh` builds the C# project and copies DLL/JSON outputs to the local STS2 mods folder.
 - `scripts/package.sh` creates `dist/Elesis-<version>.zip`.
-- Use `ELESIS_PCK_EXPORTER=godot` plus `GODOT_BIN=/path/to/godot` if the mod contains Godot scenes or assets unsupported by the quick PCK packer.
+- `scripts/package.sh` automatically uses Godot export when `Elesis/` contains `.tscn` scenes, because the quick PCK packer skips those files.
+- Use `GODOT_BIN=/path/to/godot` when Godot export is selected. `ELESIS_PCK_EXPORTER=quick|godot` remains available for explicit overrides.
 
 Update this file when the codebase architecture changes.

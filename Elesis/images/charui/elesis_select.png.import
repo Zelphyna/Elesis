@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6lmnc8pcxgso"
-path="res://.godot/imported/elesis_select.png-26dfc43ea98c0291213f0cd5cddc75a0.ctex"
+path="res://.godot/imported/elesis_select.png-e1b73bf1de657d4d73227bfe55fefcfe.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Elesis/images/charui/elesis_select.png"
-dest_files=["res://.godot/imported/elesis_select.png-26dfc43ea98c0291213f0cd5cddc75a0.ctex"]
+dest_files=["res://.godot/imported/elesis_select.png-e1b73bf1de657d4d73227bfe55fefcfe.ctex"]
 
 [params]
 

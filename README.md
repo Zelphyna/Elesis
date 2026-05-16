@@ -27,10 +27,11 @@ scripts/build.sh
 scripts/package.sh
 ```
 
-If the mod uses `.tscn` scenes or Godot-only assets, package with Godot export:
+If the mod uses `.tscn` scenes or Godot-only assets, `scripts/package.sh` automatically switches to Godot export. On the shared VPS setup, pass the local Godot binary:
 
 ```sh
-GODOT_BIN=/path/to/Godot_v4.5.1-stable_mono scripts/package.sh 0.1.0
+GODOT_BIN=/mnt/HC_Volume_105232828/shared/tools/godot/godot-4.5.1/Godot_v4.5.1-stable_mono_linux_x86_64/Godot_v4.5.1-stable_mono_linux.x86_64 \
+scripts/package.sh
 ```
 
 ## Project Notes

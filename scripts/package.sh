@@ -13,7 +13,13 @@ mkdir -p "$dist_dir"
 
 "$repo_root/scripts/build.sh"
 
-pck_exporter="${ELESIS_PCK_EXPORTER:-quick}"
+if [[ -n "${ELESIS_PCK_EXPORTER:-}" ]]; then
+  pck_exporter="$ELESIS_PCK_EXPORTER"
+elif find "$repo_root/$mod_id" -type f -name '*.tscn' -print -quit | grep -q .; then
+  pck_exporter="godot"
+else
+  pck_exporter="quick"
+fi
 
 case "$pck_exporter" in
   quick)

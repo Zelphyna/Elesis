@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nelb1lvgeyqb"
-path="res://.godot/imported/elesis_select_locked.png-d84a9c6ee492265e86acf907b2e963d1.ctex"
+path="res://.godot/imported/elesis_select_locked.png-860728ef86274a52e583e6fbbfda682b.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Elesis/images/charui/elesis_select_locked.png"
-dest_files=["res://.godot/imported/elesis_select_locked.png-d84a9c6ee492265e86acf907b2e963d1.ctex"]
+dest_files=["res://.godot/imported/elesis_select_locked.png-860728ef86274a52e583e6fbbfda682b.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmcweyfgeu87d"
-path="res://.godot/imported/card.png-411ac0fa88737ef8957216d73d81578e.ctex"
+path="res://.godot/imported/card.png-d0ab1df52d9a37b025d5ab1c0198da63.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Elesis/images/card_portraits/card.png"
-dest_files=["res://.godot/imported/card.png-411ac0fa88737ef8957216d73d81578e.ctex"]
+dest_files=["res://.godot/imported/card.png-d0ab1df52d9a37b025d5ab1c0198da63.ctex"]
 
 [params]
 

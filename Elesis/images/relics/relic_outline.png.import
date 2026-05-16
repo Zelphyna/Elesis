@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2qivbagt2usi"
-path="res://.godot/imported/relic_outline.png-a2f0f6bb90ecc13a10ed616b035ebfde.ctex"
+path="res://.godot/imported/relic_outline.png-5045cb565843287bfccb5f0d51cae1d4.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Elesis/images/relics/relic_outline.png"
-dest_files=["res://.godot/imported/relic_outline.png-a2f0f6bb90ecc13a10ed616b035ebfde.ctex"]
+dest_files=["res://.godot/imported/relic_outline.png-5045cb565843287bfccb5f0d51cae1d4.ctex"]
 
 [params]
 

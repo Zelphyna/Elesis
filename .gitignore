@@ -12,3 +12,7 @@ packages/
 *.user
 scripts/*.gd.uid
 Directory.Build.props
+Eve/
+Elesis_base_path.png.import
+Elesis/images/card_portraits/source/**/*.import
+Elesis/images/charui/*_source.png.import

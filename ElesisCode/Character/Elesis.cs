@@ -52,5 +52,6 @@ public class Elesis : PlaceholderCharacterModel
     public override string CustomIconTexturePath => "elesis_icon.png".CharacterUiPath();
     public override string CustomCharacterSelectIconPath => "elesis_select.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "elesis_select_locked.png".CharacterUiPath();
+    public override string CustomCharacterSelectBg => $"{MainFile.ResPath}/scenes/character_select/elesis_character_select_bg.tscn";
     public override string CustomMapMarkerPath => "elesis_map_marker.png".CharacterUiPath();
 }
