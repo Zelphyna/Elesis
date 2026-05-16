@@ -11,6 +11,7 @@ Current implementation status:
 - `Flame` cards generate Flame. Non-Flame Attacks consume all Flame and add that much damage.
 - `Parry` cards currently gain Chivalry and provide efficient Block; dedicated counterattack behavior is still open.
 - Prototype cards share the placeholder card art until dedicated assets are produced.
+- Starting deck is 10 cards: 4 `ElesisStrike`, 4 `ElesisDefend`, 1 `QuickStep`, and 1 `ClaymoreArc`. `QuickStep` introduces Vitality/Chivalry cycling, while `ClaymoreArc` gives the starter deck a first Destruction payoff once Chivalry reaches 5.
 
 ## Basic
 

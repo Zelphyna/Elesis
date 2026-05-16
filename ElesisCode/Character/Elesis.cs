@@ -1,5 +1,6 @@
 using BaseLib.Abstracts;
 using BaseLib.Utils.NodeFactories;
+using Elesis.ElesisCode.Cards;
 using Elesis.ElesisCode.Cards.Basic;
 using Elesis.ElesisCode.Extensions;
 using Elesis.ElesisCode.Relics;
@@ -42,7 +43,9 @@ public class Elesis : CustomCharacterModel
         ModelDb.Card<ElesisDefend>(),
         ModelDb.Card<ElesisDefend>(),
         ModelDb.Card<ElesisDefend>(),
-        ModelDb.Card<ElesisDefend>()
+        ModelDb.Card<ElesisDefend>(),
+        ModelDb.Card<QuickStep>(),
+        ModelDb.Card<ClaymoreArc>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics => [
