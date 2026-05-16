@@ -9,7 +9,7 @@ unique_name_in_owner = true
 texture = ExtResource("1_combat")
 centered = true
 position = Vector2(0, -225)
-scale = Vector2(0.34, 0.34)
+scale = Vector2(0.204, 0.204)
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

@@ -6,4 +6,4 @@
 texture = ExtResource("1_rest")
 centered = true
 offset = Vector2(0, -280)
-scale = Vector2(0.42, 0.42)
+scale = Vector2(0.168, 0.168)
