@@ -129,6 +129,22 @@ public sealed class BelderKnightEmblem : ElesisRelic
         await PowerCmd.Apply<ChivalryPower>(Owner.Creature, StartingChivalry, Owner.Creature, null, true);
     }
 
+    public override async Task AfterRoomEntered(AbstractRoom room)
+    {
+        if (room is MapRoom)
+        {
+            await ElesisSpecializationController.TryOpenPendingProgressionEvent(this);
+        }
+    }
+
+    public override async Task AfterRewardTaken(Player player, Reward reward)
+    {
+        if (player == Owner && reward is ElesisExperienceReward)
+        {
+            await ElesisSpecializationController.TryOpenPendingProgressionEvent(this);
+        }
+    }
+
     public void GainExperience(int amount)
     {
         if (amount <= 0)

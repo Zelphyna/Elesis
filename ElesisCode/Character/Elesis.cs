@@ -33,7 +33,7 @@ public class Elesis : CustomCharacterModel
     public override string CustomCharacterSelectTransitionPath => "res://materials/transitions/ironclad_transition_mat.tres";
     public override string CustomVisualPath => ElesisSpecializationVisuals.CurrentCombatScenePath();
     public override string CustomMerchantAnimPath => ElesisSpecializationVisuals.CurrentMerchantScenePath();
-    public override string CustomRestSiteAnimPath => $"{MainFile.ResPath}/scenes/rest_site/elesis_rest.tscn";
+    public override string CustomRestSiteAnimPath => ElesisSpecializationVisuals.CurrentRestSiteScenePath();
     public override string CustomTrailPath => "res://scenes/vfx/card_trail_ironclad.tscn";
     public override string CustomEnergyCounterPath => $"{MainFile.ResPath}/scenes/combat/elesis_energy_counter.tscn";
     public override Control CustomIcon

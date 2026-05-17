@@ -1,7 +1,6 @@
 using Elesis.ElesisCode.Events;
 using Elesis.ElesisCode.Relics;
 using MegaCrit.Sts2.Core.Context;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
@@ -13,25 +12,8 @@ public static class ElesisSpecializationController
     private const int SpecializationThreshold = 15;
     private const int SecondEvolutionThreshold = 35;
     private const int FinalEvolutionThreshold = 55;
-    private static bool _isRegistered;
 
-    public static void Register()
-    {
-        if (_isRegistered)
-        {
-            return;
-        }
-
-        RunManager.Instance.RoomEntered += OnRoomEntered;
-        _isRegistered = true;
-    }
-
-    private static void OnRoomEntered()
-    {
-        TaskHelper.RunSafely(OnRoomEnteredAsync());
-    }
-
-    private static async Task OnRoomEnteredAsync()
+    public static async Task TryOpenPendingProgressionEvent(BelderKnightEmblem emblem)
     {
         var runManager = RunManager.Instance;
         var state = runManager.DebugOnlyGetState();
@@ -46,38 +28,9 @@ public static class ElesisSpecializationController
             return;
         }
 
-        var emblem = player.Relics.OfType<BelderKnightEmblem>().FirstOrDefault();
-        if (emblem == null)
+        if (player != emblem.Owner)
         {
             return;
-        }
-
-        var completedNodeCount = state.TotalFloor;
-        if (completedNodeCount <= 0 || emblem.LastProcessedNodeCount >= completedNodeCount)
-        {
-            return;
-        }
-
-        var historyEntry = state.CurrentMapPointHistoryEntry;
-        if (historyEntry == null)
-        {
-            return;
-        }
-
-        var roomTypes = historyEntry.Rooms.Select(room => room.RoomType).ToList();
-        if (IsCombatExperienceNode(roomTypes))
-        {
-            if (!emblem.CombatExperienceClaimedAwaitingMap && emblem.LastExperienceAwardedNodeCount < completedNodeCount)
-            {
-                return;
-            }
-
-            emblem.CombatExperienceClaimedAwaitingMap = false;
-            emblem.LastExperienceAwardedNodeCount = Math.Max(emblem.LastExperienceAwardedNodeCount, completedNodeCount);
-        }
-        else
-        {
-            emblem.LastExperienceAwardedNodeCount = Math.Max(emblem.LastExperienceAwardedNodeCount, completedNodeCount);
         }
 
         if (emblem.ShouldOpenSpecializationChoice(SpecializationThreshold))
@@ -100,8 +53,6 @@ public static class ElesisSpecializationController
             await runManager.EnterRoomWithoutExitingCurrentRoom(new EventRoom(ModelDb.Event<ElesisFinalEvolutionEvent>()), fadeToBlack: true);
             return;
         }
-
-        emblem.LastProcessedNodeCount = completedNodeCount;
     }
 
     public static int ExperienceFor(IEnumerable<RoomType> roomTypes)
