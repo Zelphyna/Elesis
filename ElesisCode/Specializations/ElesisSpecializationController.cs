@@ -57,15 +57,15 @@ public static class ElesisSpecializationController
         }
 
         var player = LocalContext.GetMe(state);
-        if (player?.Character.Id.Entry != Character.Elesis.CharacterId)
+        if (player == null)
         {
-            MainFile.Logger.Info($"Elesis progression check skipped: current player is {player?.Character.Id.Entry.ToString() ?? "null"}.");
+            MainFile.Logger.Info("Elesis progression check skipped: current player is null.");
             return;
         }
 
         if (!player.Relics.OfType<BelderKnightEmblem>().Contains(emblem))
         {
-            MainFile.Logger.Info("Elesis progression check skipped: current player does not own this Belder Knight Emblem.");
+            MainFile.Logger.Info($"Elesis progression check skipped: current player {player.Character.Id.Entry} does not own this Belder Knight Emblem.");
             return;
         }
 
@@ -146,9 +146,7 @@ public static class ElesisSpecializationController
         }
 
         var player = LocalContext.GetMe(state);
-        return player?.Character.Id.Entry == Character.Elesis.CharacterId
-            ? player.Relics.OfType<BelderKnightEmblem>().FirstOrDefault()
-            : null;
+        return player?.Relics.OfType<BelderKnightEmblem>().FirstOrDefault();
     }
 
     public static int ExperienceFor(IEnumerable<RoomType> roomTypes)
