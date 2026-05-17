@@ -4,5 +4,11 @@
   "ELESIS-CHIVALRY_POWER.smartDescription": "Elesis' combat rhythm. Vitality cards gain Chivalry and spend 5 Chivalry to draw 1 card. Destruction cards spend 5 Chivalry for bonus damage or Block.",
   "ELESIS-FLAME_POWER.title": "Flame",
   "ELESIS-FLAME_POWER.description": "Elesis' stored fire. Non-Flame Attacks consume all Flame and add that much damage.",
-  "ELESIS-FLAME_POWER.smartDescription": "Elesis' stored fire. Non-Flame Attacks consume all Flame and add that much damage."
+  "ELESIS-FLAME_POWER.smartDescription": "Elesis' stored fire. Non-Flame Attacks consume all Flame and add that much damage.",
+  "ELESIS-CHIVALRY_FLOW_POWER.title": "Chivalry Flow",
+  "ELESIS-CHIVALRY_FLOW_POWER.description": "At the start of your turn, gain this much Chivalry.",
+  "ELESIS-CHIVALRY_FLOW_POWER.smartDescription": "At the start of your turn, gain this much Chivalry.",
+  "ELESIS-FLAME_FLOW_POWER.title": "Flame Flow",
+  "ELESIS-FLAME_FLOW_POWER.description": "At the start of your turn, gain this much Flame.",
+  "ELESIS-FLAME_FLOW_POWER.smartDescription": "At the start of your turn, gain this much Flame."
 }

@@ -6,7 +6,7 @@
   "ELESIS-FLAME.title": "Flame",
   "ELESIS-FLAME.description": "Flame cards add Flame to Elesis.\nNon-Flame attacks consume all Flame to deal that much extra damage.",
   "ELESIS-PARRY.title": "Parry",
-  "ELESIS-PARRY.description": "Parry cards are defensive knight techniques.\nThey currently gain Chivalry while protecting Elesis.",
+  "ELESIS-PARRY.description": "Parry cards are defensive knight techniques.\nThey protect Elesis or prepare her Chivalry and Flame rhythm.",
   "ELESIS-CHIVALRY.title": "Chivalry",
   "ELESIS-CHIVALRY.description": "Chivalry is Elesis' stance rhythm.\nVitality cards can spend 5 Chivalry to draw 1 card.\nDestruction cards can spend 5 Chivalry for bonus damage or Block."
 }

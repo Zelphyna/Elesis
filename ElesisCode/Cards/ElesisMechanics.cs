@@ -21,7 +21,7 @@ public static class ElesisMechanics
     public const int ChivalryThreshold = 5;
     public const int ChivalryMax = 10;
 
-    public static async Task GainChivalry(Creature creature, decimal amount, CardModel source)
+    public static async Task GainChivalry(Creature creature, decimal amount, CardModel? source)
     {
         if (amount <= 0)
         {
@@ -36,7 +36,7 @@ public static class ElesisMechanics
         }
     }
 
-    public static async Task GainFlame(Creature creature, decimal amount, CardModel source)
+    public static async Task GainFlame(Creature creature, decimal amount, CardModel? source)
     {
         if (amount > 0)
         {
