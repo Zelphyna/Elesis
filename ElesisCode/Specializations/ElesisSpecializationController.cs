@@ -14,6 +14,7 @@ public static class ElesisSpecializationController
     private const int SecondEvolutionThreshold = 35;
     private const int FinalEvolutionThreshold = 55;
     private static bool _isRegistered;
+    private static bool _isOpeningProgressionEvent;
 
     public static void Register()
     {
@@ -23,6 +24,7 @@ public static class ElesisSpecializationController
         }
 
         RunManager.Instance.RoomEntered += OnRoomEntered;
+        RunManager.Instance.ActEntered += OnActEntered;
         _isRegistered = true;
     }
 
@@ -31,18 +33,29 @@ public static class ElesisSpecializationController
         TaskHelper.RunSafely(ProcessCurrentMapEntry());
     }
 
-    public static async Task ProcessCurrentMapEntry(BelderKnightEmblem? emblem = null)
+    private static void OnActEntered()
     {
-        emblem ??= CurrentElesisEmblem();
+        TaskHelper.RunSafely(ProcessCurrentMapEntry(requireMapRoom: false));
+    }
+
+    public static async Task ProcessCurrentMapEntry(BelderKnightEmblem? emblem = null, bool requireMapRoom = true)
+    {
+        emblem ??= CurrentElesisEmblem(requireMapRoom);
         if (emblem != null)
         {
             ProcessMapExperienceFallback(emblem);
-            await TryOpenPendingProgressionEvent(emblem);
+            await TryOpenPendingProgressionEvent(emblem, requireMapRoom);
         }
     }
 
     public static async Task TryOpenPendingProgressionEvent(BelderKnightEmblem emblem, bool requireMapRoom = true)
     {
+        if (_isOpeningProgressionEvent)
+        {
+            MainFile.Logger.Info($"Elesis progression check skipped: progression event already opening. xp={emblem.Experience}");
+            return;
+        }
+
         var runManager = RunManager.Instance;
         var state = runManager.DebugOnlyGetState();
         if (state == null)
@@ -72,25 +85,51 @@ public static class ElesisSpecializationController
         if (emblem.ShouldOpenSpecializationChoice(SpecializationThreshold))
         {
             MainFile.Logger.Info($"Opening Elesis specialization event. xp={emblem.Experience} threshold={SpecializationThreshold}");
-            emblem.SpecializationChoicePending = true;
-            await runManager.EnterRoomWithoutExitingCurrentRoom(new EventRoom(ModelDb.Event<ElesisSpecializationEvent>()), fadeToBlack: true);
+            await OpenProgressionEvent(
+                () => emblem.SpecializationChoicePending = true,
+                () => emblem.SpecializationChoicePending = false,
+                new EventRoom(ModelDb.Event<ElesisSpecializationEvent>()));
             return;
         }
 
         if (emblem.ShouldOpenEvolution(SecondEvolutionThreshold, 2))
         {
             MainFile.Logger.Info($"Opening Elesis second evolution event. xp={emblem.Experience} threshold={SecondEvolutionThreshold} specialization={emblem.Specialization}");
-            emblem.PendingEvolutionTier = 2;
-            await runManager.EnterRoomWithoutExitingCurrentRoom(new EventRoom(ModelDb.Event<ElesisSecondEvolutionEvent>()), fadeToBlack: true);
+            await OpenProgressionEvent(
+                () => emblem.PendingEvolutionTier = 2,
+                () => emblem.PendingEvolutionTier = 0,
+                new EventRoom(ModelDb.Event<ElesisSecondEvolutionEvent>()));
             return;
         }
 
         if (emblem.ShouldOpenEvolution(FinalEvolutionThreshold, 3))
         {
             MainFile.Logger.Info($"Opening Elesis final evolution event. xp={emblem.Experience} threshold={FinalEvolutionThreshold} specialization={emblem.Specialization}");
-            emblem.PendingEvolutionTier = 3;
-            await runManager.EnterRoomWithoutExitingCurrentRoom(new EventRoom(ModelDb.Event<ElesisFinalEvolutionEvent>()), fadeToBlack: true);
+            await OpenProgressionEvent(
+                () => emblem.PendingEvolutionTier = 3,
+                () => emblem.PendingEvolutionTier = 0,
+                new EventRoom(ModelDb.Event<ElesisFinalEvolutionEvent>()));
             return;
+        }
+    }
+
+    private static async Task OpenProgressionEvent(Action markPending, Action clearPending, EventRoom room)
+    {
+        _isOpeningProgressionEvent = true;
+        markPending();
+
+        try
+        {
+            await RunManager.Instance.EnterRoomWithoutExitingCurrentRoom(room, fadeToBlack: true);
+        }
+        catch
+        {
+            clearPending();
+            throw;
+        }
+        finally
+        {
+            _isOpeningProgressionEvent = false;
         }
     }
 
@@ -137,10 +176,10 @@ public static class ElesisSpecializationController
         emblem.LastExperienceAwardedNodeCount = completedNodeCount;
     }
 
-    private static BelderKnightEmblem? CurrentElesisEmblem()
+    private static BelderKnightEmblem? CurrentElesisEmblem(bool requireMapRoom = true)
     {
         var state = RunManager.Instance.DebugOnlyGetState();
-        if (state?.CurrentRoom is not MapRoom)
+        if (state == null || (requireMapRoom && state.CurrentRoom is not MapRoom))
         {
             return null;
         }

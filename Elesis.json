@@ -3,7 +3,7 @@
   "name": "Elesis",
   "author": "Zelphyna",
   "description": "Playable Slay the Spire 2 character mod for Elesis, based on her base Elsword identity.",
-  "version": "0.4.30",
+  "version": "0.4.31",
   "has_pck": true,
   "has_dll": true,
   "min_game_version": "0.103.2",

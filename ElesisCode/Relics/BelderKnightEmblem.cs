@@ -137,14 +137,6 @@ public sealed class BelderKnightEmblem : ElesisRelic
         }
     }
 
-    public override async Task AfterRewardTaken(Player player, Reward reward)
-    {
-        if (player == Owner && reward is ElesisExperienceReward)
-        {
-            await ElesisSpecializationController.TryOpenPendingProgressionEvent(this, requireMapRoom: false);
-        }
-    }
-
     public void GainExperience(int amount)
     {
         if (amount <= 0)
@@ -167,6 +159,7 @@ public sealed class BelderKnightEmblem : ElesisRelic
     public bool ShouldOpenSpecializationChoice(int threshold)
     {
         return Specialization == ElesisSpecialization.None
+            && !SpecializationChoicePending
             && Experience >= threshold;
     }
 
@@ -174,7 +167,7 @@ public sealed class BelderKnightEmblem : ElesisRelic
     {
         return Specialization != ElesisSpecialization.None
             && EvolutionTier < targetTier
-            && (PendingEvolutionTier == 0 || PendingEvolutionTier == targetTier)
+            && PendingEvolutionTier == 0
             && Experience >= threshold;
     }
 

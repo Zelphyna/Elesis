@@ -1,6 +1,5 @@
 using BaseLib.Abstracts;
 using Elesis.ElesisCode.Relics;
-using Elesis.ElesisCode.Specializations;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Rewards;
@@ -40,18 +39,17 @@ public sealed class ElesisExperienceReward : CustomReward
         return Task.CompletedTask;
     }
 
-    protected override async Task<bool> OnSelect()
+    protected override Task<bool> OnSelect()
     {
         var emblem = Player.Relics.OfType<BelderKnightEmblem>().FirstOrDefault();
         if (emblem == null)
         {
             MainFile.Logger.Info("Elesis XP reward selected but Belder Knight Emblem was not found.");
-            return false;
+            return Task.FromResult(false);
         }
 
         emblem.ClaimCombatExperienceReward(Amount);
-        await ElesisSpecializationController.TryOpenPendingProgressionEvent(emblem, requireMapRoom: false);
-        return true;
+        return Task.FromResult(true);
     }
 
     public override void MarkContentAsSeen()
