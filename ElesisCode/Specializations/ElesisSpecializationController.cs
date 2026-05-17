@@ -41,23 +41,31 @@ public static class ElesisSpecializationController
         }
     }
 
-    public static async Task TryOpenPendingProgressionEvent(BelderKnightEmblem emblem)
+    public static async Task TryOpenPendingProgressionEvent(BelderKnightEmblem emblem, bool requireMapRoom = true)
     {
         var runManager = RunManager.Instance;
         var state = runManager.DebugOnlyGetState();
-        if (state?.CurrentRoom is not MapRoom)
+        if (state == null)
         {
+            return;
+        }
+
+        if (requireMapRoom && state.CurrentRoom is not MapRoom)
+        {
+            MainFile.Logger.Info($"Elesis progression check deferred: current room is {state.CurrentRoom?.GetType().Name ?? "null"}, xp={emblem.Experience}");
             return;
         }
 
         var player = LocalContext.GetMe(state);
         if (player?.Character.Id.Entry != Character.Elesis.CharacterId)
         {
+            MainFile.Logger.Info($"Elesis progression check skipped: current player is {player?.Character.Id.Entry.ToString() ?? "null"}.");
             return;
         }
 
         if (!player.Relics.OfType<BelderKnightEmblem>().Contains(emblem))
         {
+            MainFile.Logger.Info("Elesis progression check skipped: current player does not own this Belder Knight Emblem.");
             return;
         }
 

@@ -141,7 +141,7 @@ public sealed class BelderKnightEmblem : ElesisRelic
     {
         if (player == Owner && reward is ElesisExperienceReward)
         {
-            await ElesisSpecializationController.TryOpenPendingProgressionEvent(this);
+            await ElesisSpecializationController.TryOpenPendingProgressionEvent(this, requireMapRoom: false);
         }
     }
 
