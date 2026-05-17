@@ -2,6 +2,8 @@ using Godot;
 using HarmonyLib;
 using BaseLib.Abstracts;
 using Elesis.ElesisCode.Character;
+using Elesis.ElesisCode.Events;
+using Elesis.ElesisCode.Specializations;
 using MegaCrit.Sts2.Core.Modding;
 
 namespace Elesis.ElesisCode;
@@ -18,6 +20,9 @@ public partial class MainFile : Node
     {
         Harmony harmony = new(ModId);
         harmony.PatchAll();
+        _ = new ElesisSpecializationEvent();
+        ElesisSpecializationController.Register();
+        ElesisSpecializationVisuals.RegisterSceneConversions();
         ModelDbCustomCharacters.Register(new Character.Elesis());
     }
 }

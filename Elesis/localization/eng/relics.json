@@ -1,5 +1,5 @@
 {
   "ELESIS-BELDER_KNIGHT_EMBLEM.title": "Belder Knight Emblem",
-  "ELESIS-BELDER_KNIGHT_EMBLEM.description": "At the start of each combat, gain 2 [blue]Chivalry[/blue].",
+  "ELESIS-BELDER_KNIGHT_EMBLEM.description": "At the start of each combat, gain 2 [blue]Chivalry[/blue].\nGains experience after each map node.\nAt 15 experience, Elesis chooses a specialization for the rest of the run.",
   "ELESIS-BELDER_KNIGHT_EMBLEM.flavor": "A knightly emblem from Belder, carried as proof of resolve."
 }

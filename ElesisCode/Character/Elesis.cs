@@ -4,6 +4,7 @@ using Elesis.ElesisCode.Cards;
 using Elesis.ElesisCode.Cards.Basic;
 using Elesis.ElesisCode.Extensions;
 using Elesis.ElesisCode.Relics;
+using Elesis.ElesisCode.Specializations;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Helpers;
@@ -30,7 +31,7 @@ public class Elesis : CustomCharacterModel
     public override string CustomCastSfx => "event:/sfx/characters/ironclad/ironclad_cast";
     public override string CustomDeathSfx => "event:/sfx/characters/ironclad/ironclad_die";
     public override string CustomCharacterSelectTransitionPath => "res://materials/transitions/ironclad_transition_mat.tres";
-    public override string CustomVisualPath => $"{MainFile.ResPath}/scenes/creature_visuals/elesis_combat.tscn";
+    public override string CustomVisualPath => ElesisSpecializationVisuals.CurrentCombatScenePath();
     public override string CustomMerchantAnimPath => SceneHelper.GetScenePath("merchant/characters/ironclad_merchant");
     public override string CustomRestSiteAnimPath => $"{MainFile.ResPath}/scenes/rest_site/elesis_rest.tscn";
     public override string CustomTrailPath => "res://scenes/vfx/card_trail_ironclad.tscn";
