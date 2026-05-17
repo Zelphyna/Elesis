@@ -18,7 +18,7 @@ public abstract class ElesisEvolutionEvent : CustomEventModel
         get
         {
             var emblem = GetEmblem();
-            return emblem == null ? null : ElesisSpecializationVisuals.ImagePathFor(emblem.Specialization, TargetTier);
+            return emblem == null ? null : ElesisSpecializationVisuals.EventPortraitPathFor(emblem.Specialization, TargetTier);
         }
     }
 

@@ -11,7 +11,7 @@ public sealed class ElesisSpecializationEvent : CustomEventModel
 {
     public override bool IsAllowed(IRunState runState) => false;
 
-    public override string? CustomInitialPortraitPath => $"{MainFile.ResPath}/images/events/elesis_specialization_choice_portrait.png";
+    public override string? CustomInitialPortraitPath => ElesisSpecializationVisuals.EventPortraitPathFor(ElesisSpecialization.SaberKnight, 1);
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {

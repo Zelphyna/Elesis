@@ -14,7 +14,7 @@ Confirmed design direction:
 - Map marker art in solo and multiplayer reuses Elesis' compendium icon so her map presence matches the character icon.
 - Combat, shop, and rest-site character art use transparent sprite assets with bottom-aligned scene placement. Combat art leans more chibi/readable than the larger menu illustrations so her feet align cleanly with other player visuals; the shop scene reuses the combat-scale pose and follows the current specialization.
 - Specialization art lives under `Elesis/images/specializations/` as `900x1000` transparent sprites. Each branch has three matching combat and shop visual scenes so the selected form can advance at the 15, 35, and 55 XP thresholds.
-- The specialization choice event uses a dedicated transparent portrait canvas under `Elesis/images/events/` so Elesis sits left of the option list instead of covering it.
+- Specialization and evolution events use dedicated transparent portrait canvases under `Elesis/images/events/` so Elesis sits left of the option list instead of covering it.
 - Card portraits use the pre-v0.4.16 first functional art pass rather than the chibi redraw. Keep future card portrait experiments separate until explicitly selected.
 - Compendium and run/top-panel icon art uses the restored pre-v0.4.17 Elesis icon.
 

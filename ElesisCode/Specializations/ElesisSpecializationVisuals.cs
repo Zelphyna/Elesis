@@ -91,6 +91,13 @@ public static class ElesisSpecializationVisuals
             : null;
     }
 
+    public static string? EventPortraitPathFor(ElesisSpecialization specialization, int tier)
+    {
+        return ImageNameFor(specialization, tier) is { } imageName
+            ? $"{MainFile.ResPath}/images/events/{imageName}_event_portrait.png"
+            : null;
+    }
+
     public static string DisplayNameFor(ElesisSpecialization specialization, int tier)
     {
         return ImageNameFor(specialization, tier)?.Replace('_', ' ') ?? "Elesis";
