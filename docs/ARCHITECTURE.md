@@ -11,7 +11,8 @@
 - `ElesisCode/Cards/ElesisKeywords.cs`: custom BaseLib `CardKeyword` definitions used to show hover-tip boxes for Elesis mechanics on card hover.
 - `Elesis/scenes/creature_visuals/`, `Elesis/scenes/combat/`, and `Elesis/scenes/rest_site/`: static scenes used by BaseLib's character scene conversion hooks. Combat visuals must provide a `Visuals` child plus combat anchor nodes so BaseLib can convert the scene to `NCreatureVisuals`. The custom energy counter scene supplies Elesis' large energy orb while BaseLib generates the required label and particle containers.
 - `ElesisCode/Relics/BelderKnightEmblem.cs`: starter relic used so character selection and run start have an Elesis-owned relic model to display and equip.
-- `ElesisCode/Specializations/`: run-local specialization flow for Elesis. The controller listens for map re-entry after completed nodes, awards Belder Knight Emblem XP, and opens the specialization event when the threshold is reached. The visual helper selects the combat scene for the chosen first-stage specialization.
+- `ElesisCode/Specializations/`: run-local specialization flow for Elesis. The controller listens for map re-entry after completed nodes, awards Belder Knight Emblem XP, opens the specialization event at 15 XP, opens evolution events at 35 and 55 XP, and the visual helper selects the combat scene for the current branch tier.
+- `ElesisCode/Rewards/`: custom reward types. `ElesisExperienceReward` is injected into combat rewards by Belder Knight Emblem so combat XP is claimed from the reward screen; non-combat XP remains awarded on map re-entry.
 - `scripts/`: build, package, and release helpers.
 
 ## Build Flow

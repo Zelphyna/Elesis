@@ -9,5 +9,15 @@
   "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.INITIAL.options.DARK_KNIGHT.description": "Free.\nElesis becomes Dark Knight.\nElesis' attacks deal 1 additional damage.",
   "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.INITIAL.options.SOAR_KNIGHT.title": "Choose Soar Knight",
   "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.INITIAL.options.SOAR_KNIGHT.description": "Free.\nElesis becomes Soar Knight.\nWhenever Elesis gains [gold]Block[/gold], gain 1 additional [gold]Block[/gold].",
-  "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.DONE.description": "Elesis accepts her new path.\nThe emblem changes shape, and her combat style follows."
+  "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.DONE.description": "Elesis accepts her new path.\nThe emblem changes shape, and her combat style follows.",
+  "ELESIS-ELESIS_SECOND_EVOLUTION_EVENT.title": "Elesis' Evolution",
+  "ELESIS-ELESIS_SECOND_EVOLUTION_EVENT.pages.INITIAL.description": "The Belder Knight Emblem reaches 35 experience.\n\nElesis unlocks the next step of her chosen path.\nHer combat appearance changes, and her specialization passive grows stronger.",
+  "ELESIS-ELESIS_SECOND_EVOLUTION_EVENT.pages.INITIAL.options.CONFIRM.title": "Accept Evolution",
+  "ELESIS-ELESIS_SECOND_EVOLUTION_EVENT.pages.INITIAL.options.CONFIRM.description": "Free.\nUpgrade Elesis' specialization passive to 2.",
+  "ELESIS-ELESIS_SECOND_EVOLUTION_EVENT.pages.DONE.description": "Elesis' new strength settles into the emblem.",
+  "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.title": "Elesis' Final Evolution",
+  "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.pages.INITIAL.description": "The Belder Knight Emblem reaches 55 experience.\n\nElesis unlocks the final step of her chosen path.\nHer combat appearance changes again, and her specialization passive reaches its full power.",
+  "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.pages.INITIAL.options.CONFIRM.title": "Accept Final Evolution",
+  "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.pages.INITIAL.options.CONFIRM.description": "Free.\nUpgrade Elesis' specialization passive to 3.",
+  "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.pages.DONE.description": "Elesis' path is fully awakened for this run."
 }

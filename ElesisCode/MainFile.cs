@@ -3,6 +3,7 @@ using HarmonyLib;
 using BaseLib.Abstracts;
 using Elesis.ElesisCode.Character;
 using Elesis.ElesisCode.Events;
+using Elesis.ElesisCode.Rewards;
 using Elesis.ElesisCode.Specializations;
 using MegaCrit.Sts2.Core.Modding;
 
@@ -21,6 +22,9 @@ public partial class MainFile : Node
         Harmony harmony = new(ModId);
         harmony.PatchAll();
         _ = new ElesisSpecializationEvent();
+        _ = new ElesisSecondEvolutionEvent();
+        _ = new ElesisFinalEvolutionEvent();
+        new ElesisExperienceReward(null!, 0).Initialize();
         ElesisSpecializationController.Register();
         ElesisSpecializationVisuals.RegisterSceneConversions();
         ModelDbCustomCharacters.Register(new Character.Elesis());

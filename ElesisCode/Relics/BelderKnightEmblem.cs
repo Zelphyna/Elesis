@@ -1,11 +1,14 @@
 using Elesis.ElesisCode.Powers;
+using Elesis.ElesisCode.Rewards;
 using Elesis.ElesisCode.Specializations;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Rewards;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -15,12 +18,16 @@ public sealed class BelderKnightEmblem : ElesisRelic
 {
     private const int StartingChivalry = 2;
     private int _experience;
+    private bool _combatExperienceClaimedAwaitingMap;
+    private int _evolutionTier;
+    private int _lastExperienceAwardedNodeCount;
     private int _lastProcessedNodeCount;
+    private int _pendingEvolutionTier;
     private int _specialization;
     private bool _specializationChoicePending;
 
     public override RelicRarity Rarity => RelicRarity.Starter;
-    public override bool ShowCounter => Specialization == ElesisSpecialization.None;
+    public override bool ShowCounter => true;
     public override int DisplayAmount => Experience;
 
     [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
@@ -36,6 +43,39 @@ public sealed class BelderKnightEmblem : ElesisRelic
     }
 
     [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
+    public bool CombatExperienceClaimedAwaitingMap
+    {
+        get => _combatExperienceClaimedAwaitingMap;
+        set
+        {
+            AssertMutable();
+            _combatExperienceClaimedAwaitingMap = value;
+        }
+    }
+
+    [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
+    public int EvolutionTier
+    {
+        get => _evolutionTier;
+        set
+        {
+            AssertMutable();
+            _evolutionTier = value;
+        }
+    }
+
+    [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
+    public int LastExperienceAwardedNodeCount
+    {
+        get => _lastExperienceAwardedNodeCount;
+        set
+        {
+            AssertMutable();
+            _lastExperienceAwardedNodeCount = value;
+        }
+    }
+
+    [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
     public int LastProcessedNodeCount
     {
         get => _lastProcessedNodeCount;
@@ -43,6 +83,17 @@ public sealed class BelderKnightEmblem : ElesisRelic
         {
             AssertMutable();
             _lastProcessedNodeCount = value;
+        }
+    }
+
+    [SavedProperty(SerializationCondition.SaveIfNotTypeDefault)]
+    public int PendingEvolutionTier
+    {
+        get => _pendingEvolutionTier;
+        set
+        {
+            AssertMutable();
+            _pendingEvolutionTier = value;
         }
     }
 
@@ -70,6 +121,7 @@ public sealed class BelderKnightEmblem : ElesisRelic
     }
 
     public ElesisSpecialization Specialization => (ElesisSpecialization)SavedSpecialization;
+    public int SpecializationBonus => Specialization == ElesisSpecialization.None ? 0 : Math.Max(1, EvolutionTier);
 
     public override async Task BeforeCombatStart()
     {
@@ -79,7 +131,7 @@ public sealed class BelderKnightEmblem : ElesisRelic
 
     public void GainExperience(int amount)
     {
-        if (Specialization != ElesisSpecialization.None || amount <= 0)
+        if (amount <= 0)
         {
             return;
         }
@@ -88,10 +140,35 @@ public sealed class BelderKnightEmblem : ElesisRelic
         Flash();
     }
 
+    public void AwardMapNodeExperience(int amount, int completedNodeCount)
+    {
+        if (LastExperienceAwardedNodeCount >= completedNodeCount)
+        {
+            return;
+        }
+
+        GainExperience(amount);
+        LastExperienceAwardedNodeCount = completedNodeCount;
+    }
+
+    public void ClaimCombatExperienceReward(int amount)
+    {
+        GainExperience(amount);
+        CombatExperienceClaimedAwaitingMap = true;
+    }
+
     public bool ShouldOpenSpecializationChoice(int threshold)
     {
         return Specialization == ElesisSpecialization.None
             && !SpecializationChoicePending
+            && Experience >= threshold;
+    }
+
+    public bool ShouldOpenEvolution(int threshold, int targetTier)
+    {
+        return Specialization != ElesisSpecialization.None
+            && EvolutionTier < targetTier
+            && PendingEvolutionTier == 0
             && Experience >= threshold;
     }
 
@@ -103,7 +180,22 @@ public sealed class BelderKnightEmblem : ElesisRelic
         }
 
         SavedSpecialization = (int)specialization;
+        EvolutionTier = Math.Max(EvolutionTier, 1);
         SpecializationChoicePending = false;
+        Status = RelicStatus.Active;
+        Flash();
+    }
+
+    public void UnlockEvolution(int targetTier)
+    {
+        if (Specialization == ElesisSpecialization.None || targetTier <= EvolutionTier)
+        {
+            PendingEvolutionTier = 0;
+            return;
+        }
+
+        EvolutionTier = targetTier;
+        PendingEvolutionTier = 0;
         Status = RelicStatus.Active;
         Flash();
     }
@@ -117,19 +209,35 @@ public sealed class BelderKnightEmblem : ElesisRelic
 
         return Specialization switch
         {
-            ElesisSpecialization.SaberKnight when power is ChivalryPower => amount + 1,
-            ElesisSpecialization.PyroKnight when power is FlamePower => amount + 1,
+            ElesisSpecialization.SaberKnight when power is ChivalryPower => amount + SpecializationBonus,
+            ElesisSpecialization.PyroKnight when power is FlamePower => amount + SpecializationBonus,
             _ => amount
         };
     }
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        return Specialization == ElesisSpecialization.DarkKnight && dealer == Owner.Creature ? 1 : 0;
+        return Specialization == ElesisSpecialization.DarkKnight && dealer == Owner.Creature ? SpecializationBonus : 0;
     }
 
     public override decimal ModifyBlockAdditive(Creature target, decimal block, ValueProp props, CardModel? cardSource, CardPlay? cardPlay)
     {
-        return Specialization == ElesisSpecialization.SoarKnight && target == Owner.Creature ? 1 : 0;
+        return Specialization == ElesisSpecialization.SoarKnight && target == Owner.Creature ? SpecializationBonus : 0;
+    }
+
+    public override bool TryModifyRewards(Player player, List<Reward> rewards, AbstractRoom? room)
+    {
+        if (player != Owner || room == null || !ElesisSpecializationController.IsCombatExperienceNode(room.RoomType))
+        {
+            return false;
+        }
+
+        if (rewards.OfType<ElesisExperienceReward>().Any())
+        {
+            return false;
+        }
+
+        rewards.Add(new ElesisExperienceReward(player, ElesisSpecializationController.ExperienceFor(room.RoomType)));
+        return true;
     }
 }

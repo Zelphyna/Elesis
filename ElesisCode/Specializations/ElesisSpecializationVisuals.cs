@@ -13,10 +13,13 @@ public static class ElesisSpecializationVisuals
     public static void RegisterSceneConversions()
     {
         BaseCombatScene.RegisterSceneForConversion<NCreatureVisuals>();
-        SceneFor(ElesisSpecialization.SaberKnight).RegisterSceneForConversion<NCreatureVisuals>();
-        SceneFor(ElesisSpecialization.PyroKnight).RegisterSceneForConversion<NCreatureVisuals>();
-        SceneFor(ElesisSpecialization.DarkKnight).RegisterSceneForConversion<NCreatureVisuals>();
-        SceneFor(ElesisSpecialization.SoarKnight).RegisterSceneForConversion<NCreatureVisuals>();
+        foreach (var specialization in Branches())
+        {
+            for (var tier = 1; tier <= 3; tier++)
+            {
+                SceneFor(specialization, tier).RegisterSceneForConversion<NCreatureVisuals>();
+            }
+        }
     }
 
     public static string CurrentCombatScenePath()
@@ -29,18 +32,56 @@ public static class ElesisSpecializationVisuals
 
         var player = LocalContext.GetMe(state);
         var emblem = player?.Relics.OfType<BelderKnightEmblem>().FirstOrDefault();
-        return emblem == null ? BaseCombatScene : SceneFor(emblem.Specialization);
+        return emblem == null ? BaseCombatScene : SceneFor(emblem.Specialization, emblem.EvolutionTier);
     }
 
-    public static string SceneFor(ElesisSpecialization specialization)
+    public static string SceneFor(ElesisSpecialization specialization, int tier)
     {
-        return specialization switch
+        return ImageNameFor(specialization, tier) is { } imageName
+            ? $"{MainFile.ResPath}/scenes/creature_visuals/specializations/elesis_{imageName}_combat.tscn"
+            : BaseCombatScene;
+    }
+
+    public static string? ImagePathFor(ElesisSpecialization specialization, int tier)
+    {
+        return ImageNameFor(specialization, tier) is { } imageName
+            ? $"{MainFile.ResPath}/images/specializations/{imageName}.png"
+            : null;
+    }
+
+    public static string DisplayNameFor(ElesisSpecialization specialization, int tier)
+    {
+        return ImageNameFor(specialization, tier)?.Replace('_', ' ') ?? "Elesis";
+    }
+
+    private static IReadOnlyList<ElesisSpecialization> Branches()
+    {
+        return
+        [
+            ElesisSpecialization.SaberKnight,
+            ElesisSpecialization.PyroKnight,
+            ElesisSpecialization.DarkKnight,
+            ElesisSpecialization.SoarKnight
+        ];
+    }
+
+    private static string? ImageNameFor(ElesisSpecialization specialization, int tier)
+    {
+        return (specialization, Math.Clamp(tier, 1, 3)) switch
         {
-            ElesisSpecialization.SaberKnight => $"{MainFile.ResPath}/scenes/creature_visuals/specializations/elesis_saber_knight_combat.tscn",
-            ElesisSpecialization.PyroKnight => $"{MainFile.ResPath}/scenes/creature_visuals/specializations/elesis_pyro_knight_combat.tscn",
-            ElesisSpecialization.DarkKnight => $"{MainFile.ResPath}/scenes/creature_visuals/specializations/elesis_dark_knight_combat.tscn",
-            ElesisSpecialization.SoarKnight => $"{MainFile.ResPath}/scenes/creature_visuals/specializations/elesis_soar_knight_combat.tscn",
-            _ => BaseCombatScene
+            (ElesisSpecialization.SaberKnight, 1) => "saber_knight",
+            (ElesisSpecialization.SaberKnight, 2) => "grand_master",
+            (ElesisSpecialization.SaberKnight, 3) => "empire_sword",
+            (ElesisSpecialization.PyroKnight, 1) => "pyro_knight",
+            (ElesisSpecialization.PyroKnight, 2) => "blazing_heart",
+            (ElesisSpecialization.PyroKnight, 3) => "flame_lord",
+            (ElesisSpecialization.DarkKnight, 1) => "dark_knight",
+            (ElesisSpecialization.DarkKnight, 2) => "crimson_avenger",
+            (ElesisSpecialization.DarkKnight, 3) => "bloody_queen",
+            (ElesisSpecialization.SoarKnight, 1) => "soar_knight",
+            (ElesisSpecialization.SoarKnight, 2) => "patrona",
+            (ElesisSpecialization.SoarKnight, 3) => "adrestia",
+            _ => null
         };
     }
 }
