@@ -9,6 +9,7 @@ namespace Elesis.ElesisCode.Specializations;
 public static class ElesisSpecializationVisuals
 {
     private const string BaseCombatScene = $"{MainFile.ResPath}/scenes/creature_visuals/elesis_combat.tscn";
+    private const string BaseMerchantScene = $"{MainFile.ResPath}/scenes/merchant/elesis_shop.tscn";
 
     public static void RegisterSceneConversions()
     {
@@ -35,11 +36,31 @@ public static class ElesisSpecializationVisuals
         return emblem == null ? BaseCombatScene : SceneFor(emblem.Specialization, emblem.EvolutionTier);
     }
 
+    public static string CurrentMerchantScenePath()
+    {
+        var state = RunManager.Instance.DebugOnlyGetState();
+        if (state == null)
+        {
+            return BaseMerchantScene;
+        }
+
+        var player = LocalContext.GetMe(state);
+        var emblem = player?.Relics.OfType<BelderKnightEmblem>().FirstOrDefault();
+        return emblem == null ? BaseMerchantScene : MerchantSceneFor(emblem.Specialization, emblem.EvolutionTier);
+    }
+
     public static string SceneFor(ElesisSpecialization specialization, int tier)
     {
         return ImageNameFor(specialization, tier) is { } imageName
             ? $"{MainFile.ResPath}/scenes/creature_visuals/specializations/elesis_{imageName}_combat.tscn"
             : BaseCombatScene;
+    }
+
+    public static string MerchantSceneFor(ElesisSpecialization specialization, int tier)
+    {
+        return ImageNameFor(specialization, tier) is { } imageName
+            ? $"{MainFile.ResPath}/scenes/merchant/specializations/elesis_{imageName}_shop.tscn"
+            : BaseMerchantScene;
     }
 
     public static string? ImagePathFor(ElesisSpecialization specialization, int tier)

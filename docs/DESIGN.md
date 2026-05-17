@@ -12,8 +12,8 @@ Confirmed design direction:
 - The starter relic visual is the Belder Knight Emblem: a red-and-gold knight crest with a claymore motif on a transparent background, matching her red knight identity.
 - Energy UI uses a red crystal-and-gold knight orb. Chivalry uses a red-gold sword crest power icon, and Flame uses a sharper red-orange sword-flame crest icon.
 - Map marker art in solo and multiplayer reuses Elesis' compendium icon so her map presence matches the character icon.
-- Combat, shop, and rest-site character art use transparent sprite assets with bottom-aligned scene placement. Combat art leans more chibi/readable than the larger menu illustrations so her feet align cleanly with other player visuals.
-- Specialization art lives under `Elesis/images/specializations/` as `900x1000` transparent sprites. Each branch has three matching combat visual scenes so the selected form can advance at the 15, 35, and 55 XP thresholds.
+- Combat, shop, and rest-site character art use transparent sprite assets with bottom-aligned scene placement. Combat art leans more chibi/readable than the larger menu illustrations so her feet align cleanly with other player visuals; the shop scene reuses the combat-scale pose and follows the current specialization.
+- Specialization art lives under `Elesis/images/specializations/` as `900x1000` transparent sprites. Each branch has three matching combat and shop visual scenes so the selected form can advance at the 15, 35, and 55 XP thresholds.
 - Card portraits use the pre-v0.4.16 first functional art pass rather than the chibi redraw. Keep future card portrait experiments separate until explicitly selected.
 - Compendium and run/top-panel icon art uses the restored pre-v0.4.17 Elesis icon.
 
