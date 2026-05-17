@@ -20,3 +20,20 @@ public static class RunManagerProgressionPatch
         await ElesisSpecializationController.ProcessCurrentMapEntry(requireMapRoom: false);
     }
 }
+
+[HarmonyPatch(typeof(RunManager), nameof(RunManager.EnterNextAct))]
+public static class RunManagerNextActProgressionPatch
+{
+    public static void Postfix(Task __result)
+    {
+        TaskHelper.RunSafely(CheckElesisProgressionAfterNextAct(__result));
+    }
+
+    private static async Task CheckElesisProgressionAfterNextAct(Task enterNextActTask)
+    {
+        await enterNextActTask;
+        await Task.Yield();
+        MainFile.Logger.Info("Elesis progression check after next act transition.");
+        await ElesisSpecializationController.ProcessCurrentMapEntry();
+    }
+}

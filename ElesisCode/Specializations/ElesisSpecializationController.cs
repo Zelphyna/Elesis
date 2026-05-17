@@ -24,18 +24,12 @@ public static class ElesisSpecializationController
         }
 
         RunManager.Instance.RoomEntered += OnRoomEntered;
-        RunManager.Instance.ActEntered += OnActEntered;
         _isRegistered = true;
     }
 
     private static void OnRoomEntered()
     {
         TaskHelper.RunSafely(ProcessCurrentMapEntry());
-    }
-
-    private static void OnActEntered()
-    {
-        TaskHelper.RunSafely(ProcessCurrentMapEntry(requireMapRoom: false));
     }
 
     public static async Task ProcessCurrentMapEntry(BelderKnightEmblem? emblem = null, bool requireMapRoom = true)
