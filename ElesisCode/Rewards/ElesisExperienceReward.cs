@@ -44,6 +44,7 @@ public sealed class ElesisExperienceReward : CustomReward
         var emblem = Player.Relics.OfType<BelderKnightEmblem>().FirstOrDefault();
         if (emblem == null)
         {
+            MainFile.Logger.Info("Elesis XP reward selected but Belder Knight Emblem was not found.");
             return Task.FromResult(false);
         }
 

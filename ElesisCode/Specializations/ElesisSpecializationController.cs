@@ -28,14 +28,15 @@ public static class ElesisSpecializationController
 
     private static void OnRoomEntered()
     {
-        TaskHelper.RunSafely(TryOpenPendingProgressionEventForCurrentMap());
+        TaskHelper.RunSafely(ProcessCurrentMapEntry());
     }
 
-    public static async Task TryOpenPendingProgressionEventForCurrentMap()
+    public static async Task ProcessCurrentMapEntry(BelderKnightEmblem? emblem = null)
     {
-        var emblem = CurrentElesisEmblem();
+        emblem ??= CurrentElesisEmblem();
         if (emblem != null)
         {
+            ProcessMapExperienceFallback(emblem);
             await TryOpenPendingProgressionEvent(emblem);
         }
     }
@@ -62,6 +63,7 @@ public static class ElesisSpecializationController
 
         if (emblem.ShouldOpenSpecializationChoice(SpecializationThreshold))
         {
+            MainFile.Logger.Info($"Opening Elesis specialization event. xp={emblem.Experience} threshold={SpecializationThreshold}");
             emblem.SpecializationChoicePending = true;
             await runManager.EnterRoomWithoutExitingCurrentRoom(new EventRoom(ModelDb.Event<ElesisSpecializationEvent>()), fadeToBlack: true);
             return;
@@ -69,6 +71,7 @@ public static class ElesisSpecializationController
 
         if (emblem.ShouldOpenEvolution(SecondEvolutionThreshold, 2))
         {
+            MainFile.Logger.Info($"Opening Elesis second evolution event. xp={emblem.Experience} threshold={SecondEvolutionThreshold} specialization={emblem.Specialization}");
             emblem.PendingEvolutionTier = 2;
             await runManager.EnterRoomWithoutExitingCurrentRoom(new EventRoom(ModelDb.Event<ElesisSecondEvolutionEvent>()), fadeToBlack: true);
             return;
@@ -76,10 +79,54 @@ public static class ElesisSpecializationController
 
         if (emblem.ShouldOpenEvolution(FinalEvolutionThreshold, 3))
         {
+            MainFile.Logger.Info($"Opening Elesis final evolution event. xp={emblem.Experience} threshold={FinalEvolutionThreshold} specialization={emblem.Specialization}");
             emblem.PendingEvolutionTier = 3;
             await runManager.EnterRoomWithoutExitingCurrentRoom(new EventRoom(ModelDb.Event<ElesisFinalEvolutionEvent>()), fadeToBlack: true);
             return;
         }
+    }
+
+    private static void ProcessMapExperienceFallback(BelderKnightEmblem emblem)
+    {
+        var state = RunManager.Instance.DebugOnlyGetState();
+        if (state?.CurrentRoom is not MapRoom)
+        {
+            return;
+        }
+
+        var completedNodeCount = state.TotalFloor;
+        if (completedNodeCount <= 0 || emblem.LastExperienceAwardedNodeCount >= completedNodeCount)
+        {
+            return;
+        }
+
+        var historyEntry = state.CurrentMapPointHistoryEntry;
+        if (historyEntry == null)
+        {
+            MainFile.Logger.Info($"Elesis map XP check skipped: no map history entry. floor={completedNodeCount} xp={emblem.Experience}");
+            return;
+        }
+
+        var roomTypes = historyEntry.Rooms.Select(room => room.RoomType).ToList();
+        var amount = ExperienceFor(roomTypes);
+        if (amount <= 0)
+        {
+            emblem.LastExperienceAwardedNodeCount = completedNodeCount;
+            return;
+        }
+
+        if (emblem.CombatExperienceClaimedAwaitingMap)
+        {
+            MainFile.Logger.Info($"Elesis combat XP reward already claimed. floor={completedNodeCount} amount={amount} totalXp={emblem.Experience}");
+        }
+        else
+        {
+            MainFile.Logger.Info($"Elesis combat XP reward was not claimed before map return; awarding fallback XP. floor={completedNodeCount} amount={amount} previousXp={emblem.Experience}");
+            emblem.GainExperience(amount);
+        }
+
+        emblem.CombatExperienceClaimedAwaitingMap = false;
+        emblem.LastExperienceAwardedNodeCount = completedNodeCount;
     }
 
     private static BelderKnightEmblem? CurrentElesisEmblem()

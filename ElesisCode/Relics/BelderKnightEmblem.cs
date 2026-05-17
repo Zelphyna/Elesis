@@ -133,7 +133,7 @@ public sealed class BelderKnightEmblem : ElesisRelic
     {
         if (room is MapRoom)
         {
-            await ElesisSpecializationController.TryOpenPendingProgressionEvent(this);
+            await ElesisSpecializationController.ProcessCurrentMapEntry(this);
         }
     }
 
@@ -153,11 +153,13 @@ public sealed class BelderKnightEmblem : ElesisRelic
         }
 
         Experience += amount;
+        MainFile.Logger.Info($"Elesis gained XP. amount={amount} totalXp={Experience} specialization={Specialization} tier={EvolutionTier}");
         Flash();
     }
 
     public void ClaimCombatExperienceReward(int amount)
     {
+        MainFile.Logger.Info($"Elesis XP reward selected. amount={amount} previousXp={Experience}");
         GainExperience(amount);
         CombatExperienceClaimedAwaitingMap = true;
     }
@@ -233,15 +235,19 @@ public sealed class BelderKnightEmblem : ElesisRelic
     {
         if (player != Owner || room == null || !ElesisSpecializationController.IsCombatExperienceNode(room.RoomType))
         {
+            MainFile.Logger.Info($"Elesis XP reward not added. playerMatches={player == Owner} room={room?.RoomType.ToString() ?? "null"}");
             return false;
         }
 
         if (rewards.OfType<ElesisExperienceReward>().Any())
         {
+            MainFile.Logger.Info($"Elesis XP reward already present. room={room.RoomType}");
             return false;
         }
 
-        rewards.Add(new ElesisExperienceReward(player, ElesisSpecializationController.ExperienceFor(room.RoomType)));
+        var amount = ElesisSpecializationController.ExperienceFor(room.RoomType);
+        MainFile.Logger.Info($"Adding Elesis XP reward. room={room.RoomType} amount={amount}");
+        rewards.Add(new ElesisExperienceReward(player, amount));
         return true;
     }
 }
