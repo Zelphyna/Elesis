@@ -165,7 +165,6 @@ public sealed class BelderKnightEmblem : ElesisRelic
     public bool ShouldOpenSpecializationChoice(int threshold)
     {
         return Specialization == ElesisSpecialization.None
-            && !SpecializationChoicePending
             && Experience >= threshold;
     }
 
@@ -173,7 +172,7 @@ public sealed class BelderKnightEmblem : ElesisRelic
     {
         return Specialization != ElesisSpecialization.None
             && EvolutionTier < targetTier
-            && PendingEvolutionTier == 0
+            && (PendingEvolutionTier == 0 || PendingEvolutionTier == targetTier)
             && Experience >= threshold;
     }
 

@@ -25,6 +25,7 @@ public partial class MainFile : Node
         _ = new ElesisSecondEvolutionEvent();
         _ = new ElesisFinalEvolutionEvent();
         new ElesisExperienceReward(null!, 0).Initialize();
+        ElesisSpecializationController.Register();
         ElesisSpecializationVisuals.RegisterSceneConversions();
         ModelDbCustomCharacters.Register(new Character.Elesis());
     }

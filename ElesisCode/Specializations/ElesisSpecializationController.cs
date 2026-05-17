@@ -1,6 +1,7 @@
 using Elesis.ElesisCode.Events;
 using Elesis.ElesisCode.Relics;
 using MegaCrit.Sts2.Core.Context;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
@@ -12,6 +13,32 @@ public static class ElesisSpecializationController
     private const int SpecializationThreshold = 15;
     private const int SecondEvolutionThreshold = 35;
     private const int FinalEvolutionThreshold = 55;
+    private static bool _isRegistered;
+
+    public static void Register()
+    {
+        if (_isRegistered)
+        {
+            return;
+        }
+
+        RunManager.Instance.RoomEntered += OnRoomEntered;
+        _isRegistered = true;
+    }
+
+    private static void OnRoomEntered()
+    {
+        TaskHelper.RunSafely(TryOpenPendingProgressionEventForCurrentMap());
+    }
+
+    public static async Task TryOpenPendingProgressionEventForCurrentMap()
+    {
+        var emblem = CurrentElesisEmblem();
+        if (emblem != null)
+        {
+            await TryOpenPendingProgressionEvent(emblem);
+        }
+    }
 
     public static async Task TryOpenPendingProgressionEvent(BelderKnightEmblem emblem)
     {
@@ -28,7 +55,7 @@ public static class ElesisSpecializationController
             return;
         }
 
-        if (player != emblem.Owner)
+        if (!player.Relics.OfType<BelderKnightEmblem>().Contains(emblem))
         {
             return;
         }
@@ -53,6 +80,20 @@ public static class ElesisSpecializationController
             await runManager.EnterRoomWithoutExitingCurrentRoom(new EventRoom(ModelDb.Event<ElesisFinalEvolutionEvent>()), fadeToBlack: true);
             return;
         }
+    }
+
+    private static BelderKnightEmblem? CurrentElesisEmblem()
+    {
+        var state = RunManager.Instance.DebugOnlyGetState();
+        if (state?.CurrentRoom is not MapRoom)
+        {
+            return null;
+        }
+
+        var player = LocalContext.GetMe(state);
+        return player?.Character.Id.Entry == Character.Elesis.CharacterId
+            ? player.Relics.OfType<BelderKnightEmblem>().FirstOrDefault()
+            : null;
     }
 
     public static int ExperienceFor(IEnumerable<RoomType> roomTypes)
