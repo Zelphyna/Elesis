@@ -24,6 +24,11 @@ public static class RunManagerProgressionPatch
 [HarmonyPatch(typeof(RunManager), nameof(RunManager.EnterNextAct))]
 public static class RunManagerNextActProgressionPatch
 {
+    public static void Prefix()
+    {
+        ElesisSpecializationController.BeginActTransition();
+    }
+
     public static void Postfix(Task __result)
     {
         TaskHelper.RunSafely(CheckElesisProgressionAfterNextAct(__result));
@@ -31,8 +36,16 @@ public static class RunManagerNextActProgressionPatch
 
     private static async Task CheckElesisProgressionAfterNextAct(Task enterNextActTask)
     {
-        await enterNextActTask;
-        await Task.Yield();
+        try
+        {
+            await enterNextActTask;
+            await Task.Yield();
+        }
+        finally
+        {
+            ElesisSpecializationController.FinishActTransition();
+        }
+
         MainFile.Logger.Info("Elesis progression check after next act transition.");
         await ElesisSpecializationController.ProcessCurrentMapEntry();
     }

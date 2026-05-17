@@ -15,6 +15,7 @@ public static class ElesisSpecializationController
     private const int FinalEvolutionThreshold = 55;
     private static bool _isRegistered;
     private static bool _isOpeningProgressionEvent;
+    private static bool _isActTransitionInProgress;
 
     public static void Register()
     {
@@ -47,6 +48,12 @@ public static class ElesisSpecializationController
         if (_isOpeningProgressionEvent)
         {
             MainFile.Logger.Info($"Elesis progression check skipped: progression event already opening. xp={emblem.Experience}");
+            return;
+        }
+
+        if (_isActTransitionInProgress)
+        {
+            MainFile.Logger.Info($"Elesis progression check deferred: next-act transition in progress. xp={emblem.Experience}");
             return;
         }
 
@@ -125,6 +132,16 @@ public static class ElesisSpecializationController
         {
             _isOpeningProgressionEvent = false;
         }
+    }
+
+    public static void BeginActTransition()
+    {
+        _isActTransitionInProgress = true;
+    }
+
+    public static void FinishActTransition()
+    {
+        _isActTransitionInProgress = false;
     }
 
     private static void ProcessMapExperienceFallback(BelderKnightEmblem emblem)
