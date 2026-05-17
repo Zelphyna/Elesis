@@ -140,17 +140,6 @@ public sealed class BelderKnightEmblem : ElesisRelic
         Flash();
     }
 
-    public void AwardMapNodeExperience(int amount, int completedNodeCount)
-    {
-        if (LastExperienceAwardedNodeCount >= completedNodeCount)
-        {
-            return;
-        }
-
-        GainExperience(amount);
-        LastExperienceAwardedNodeCount = completedNodeCount;
-    }
-
     public void ClaimCombatExperienceReward(int amount)
     {
         GainExperience(amount);

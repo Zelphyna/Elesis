@@ -69,7 +69,6 @@ public static class ElesisSpecializationController
         {
             if (!emblem.CombatExperienceClaimedAwaitingMap && emblem.LastExperienceAwardedNodeCount < completedNodeCount)
             {
-                emblem.LastProcessedNodeCount = completedNodeCount;
                 return;
             }
 
@@ -78,10 +77,8 @@ public static class ElesisSpecializationController
         }
         else
         {
-            emblem.AwardMapNodeExperience(ExperienceFor(roomTypes), completedNodeCount);
+            emblem.LastExperienceAwardedNodeCount = Math.Max(emblem.LastExperienceAwardedNodeCount, completedNodeCount);
         }
-
-        emblem.LastProcessedNodeCount = completedNodeCount;
 
         if (emblem.ShouldOpenSpecializationChoice(SpecializationThreshold))
         {
@@ -101,7 +98,10 @@ public static class ElesisSpecializationController
         {
             emblem.PendingEvolutionTier = 3;
             await runManager.EnterRoomWithoutExitingCurrentRoom(new EventRoom(ModelDb.Event<ElesisFinalEvolutionEvent>()), fadeToBlack: true);
+            return;
         }
+
+        emblem.LastProcessedNodeCount = completedNodeCount;
     }
 
     public static int ExperienceFor(IEnumerable<RoomType> roomTypes)
@@ -109,20 +109,20 @@ public static class ElesisSpecializationController
         var rooms = roomTypes.ToList();
         if (rooms.Contains(RoomType.Boss))
         {
-            return 5;
+            return 6;
         }
 
         if (rooms.Contains(RoomType.Elite))
         {
-            return 3;
+            return 4;
         }
 
         if (rooms.Contains(RoomType.Monster))
         {
-            return 2;
+            return 3;
         }
 
-        return 1;
+        return 0;
     }
 
     public static int ExperienceFor(RoomType roomType)
