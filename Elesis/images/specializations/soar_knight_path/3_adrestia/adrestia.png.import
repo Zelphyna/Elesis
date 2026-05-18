@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://m2ekyc8foimr"
-path="res://.godot/imported/adrestia.png-bb7a3bd3a97fa40ffec65b3b48937b15.ctex"
+path="res://.godot/imported/adrestia.png-86cea376829631f7283159781abad4c0.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Elesis/images/specializations/soar_knight_path/3_adrestia/adrestia.png"
-dest_files=["res://.godot/imported/adrestia.png-bb7a3bd3a97fa40ffec65b3b48937b15.ctex"]
+dest_files=["res://.godot/imported/adrestia.png-86cea376829631f7283159781abad4c0.ctex"]
 
 [params]
 

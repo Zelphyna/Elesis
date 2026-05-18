@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3qwjfrl0kt5d"
-path="res://.godot/imported/saber_knight.png-9dc38ab2aac3cb20408898e366a40332.ctex"
+path="res://.godot/imported/saber_knight.png-93fa4605492568c18bfbd1add5951e18.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Elesis/images/specializations/saber_knight_path/1_saber_knight/saber_knight.png"
-dest_files=["res://.godot/imported/saber_knight.png-9dc38ab2aac3cb20408898e366a40332.ctex"]
+dest_files=["res://.godot/imported/saber_knight.png-93fa4605492568c18bfbd1add5951e18.ctex"]
 
 [params]
 

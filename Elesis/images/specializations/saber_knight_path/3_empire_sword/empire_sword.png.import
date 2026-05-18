@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnwlh0n3l08jk"
-path="res://.godot/imported/empire_sword.png-fd3ed73200ea0b5ab93ccb3383055c8a.ctex"
+path="res://.godot/imported/empire_sword.png-64259f34442742121e0f29abb17ff9be.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Elesis/images/specializations/saber_knight_path/3_empire_sword/empire_sword.png"
-dest_files=["res://.godot/imported/empire_sword.png-fd3ed73200ea0b5ab93ccb3383055c8a.ctex"]
+dest_files=["res://.godot/imported/empire_sword.png-64259f34442742121e0f29abb17ff9be.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cwke5car2y8ih"
-path="res://.godot/imported/crimson_avenger.png-404c175ca3d46f05549c0ce64023790c.ctex"
+path="res://.godot/imported/crimson_avenger.png-75dd749a5dca1bbda41cd841e9f00739.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Elesis/images/specializations/dark_knight_path/2_crimson_avenger/crimson_avenger.png"
-dest_files=["res://.godot/imported/crimson_avenger.png-404c175ca3d46f05549c0ce64023790c.ctex"]
+dest_files=["res://.godot/imported/crimson_avenger.png-75dd749a5dca1bbda41cd841e9f00739.ctex"]
 
 [params]
 

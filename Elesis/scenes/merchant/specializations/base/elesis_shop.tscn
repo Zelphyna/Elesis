@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Texture2D" path="res://Elesis/images/specializations/base/elesis_combat.png" id="1_shop"]
+[ext_resource type="Texture2D" path="res://Elesis/images/specializations/base/elesis_shop.png" id="1_shop"]
 
 [node name="ElesisShopVisual" type="Node2D"]
 
@@ -8,6 +8,6 @@
 texture = ExtResource("1_shop")
 centered = true
 position = Vector2(0, -187.2)
-scale = Vector2(0.416, 0.416)
+scale = Vector2(0.245, 0.245)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

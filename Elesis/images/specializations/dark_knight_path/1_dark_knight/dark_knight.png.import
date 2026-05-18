@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0e77ecj2nehr"
-path="res://.godot/imported/dark_knight.png-a16b51a211f8968c1a65818a95ad7dea.ctex"
+path="res://.godot/imported/dark_knight.png-f80d1f30094aea8f30e9315bc3279b4a.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Elesis/images/specializations/dark_knight_path/1_dark_knight/dark_knight.png"
-dest_files=["res://.godot/imported/dark_knight.png-a16b51a211f8968c1a65818a95ad7dea.ctex"]
+dest_files=["res://.godot/imported/dark_knight.png-f80d1f30094aea8f30e9315bc3279b4a.ctex"]
 
 [params]
 
