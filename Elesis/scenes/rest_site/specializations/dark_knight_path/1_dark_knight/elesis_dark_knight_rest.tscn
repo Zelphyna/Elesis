@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://Elesis/images/specializations/dark_knight_path/1_dark_knight/dark_knight.png" id="1_dark"]
+[ext_resource type="Script" path="res://Elesis/scenes/rest_site/elesis_rest_slot_placement.gd" id="2_slot"]
+
+[node name="ElesisDarkKnightRestVisual" type="Sprite2D"]
+script = ExtResource("2_slot")
+texture = ExtResource("1_dark")
+centered = true
+offset = Vector2(0, -125)
+scale = Vector2(0.33, 0.33)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Elesis/images/specializations/saber_knight_path/2_grand_master/grand_master.png" id="1_grand"]
+
+[node name="ElesisGrandMasterShopVisual" type="Node2D"]
+
+[node name="Visuals" type="Sprite2D" parent="."]
+texture = ExtResource("1_grand")
+centered = true
+position = Vector2(0, -187)
+scale = Vector2(0.374, 0.374)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

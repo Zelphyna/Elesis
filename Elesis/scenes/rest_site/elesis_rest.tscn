@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="Texture2D" path="res://Elesis/images/character/elesis_rest.png" id="1_rest"]
-
-[node name="ElesisRestVisual" type="Sprite2D"]
-texture = ExtResource("1_rest")
-centered = true
-offset = Vector2(0, -125)
-scale = Vector2(0.33, 0.33)

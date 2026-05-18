@@ -8,9 +8,9 @@ namespace Elesis.ElesisCode.Specializations;
 
 public static class ElesisSpecializationVisuals
 {
-    private const string BaseCombatScene = $"{MainFile.ResPath}/scenes/creature_visuals/elesis_combat.tscn";
-    private const string BaseMerchantScene = $"{MainFile.ResPath}/scenes/merchant/elesis_shop.tscn";
-    private const string BaseRestSiteScene = $"{MainFile.ResPath}/scenes/rest_site/elesis_rest.tscn";
+    private const string BaseCombatScene = $"{MainFile.ResPath}/scenes/creature_visuals/specializations/base/elesis_combat.tscn";
+    private const string BaseMerchantScene = $"{MainFile.ResPath}/scenes/merchant/specializations/base/elesis_shop.tscn";
+    private const string BaseRestSiteScene = $"{MainFile.ResPath}/scenes/rest_site/specializations/base/elesis_rest.tscn";
 
     public static void RegisterSceneConversions()
     {
@@ -65,29 +65,29 @@ public static class ElesisSpecializationVisuals
 
     public static string SceneFor(ElesisSpecialization specialization, int tier)
     {
-        return ImageNameFor(specialization, tier) is { } imageName
-            ? $"{MainFile.ResPath}/scenes/creature_visuals/specializations/elesis_{imageName}_combat.tscn"
+        return FormFolderFor(specialization, tier) is { } formFolder && ImageNameFor(specialization, tier) is { } imageName
+            ? $"{MainFile.ResPath}/scenes/creature_visuals/specializations/{formFolder}/elesis_{imageName}_combat.tscn"
             : BaseCombatScene;
     }
 
     public static string MerchantSceneFor(ElesisSpecialization specialization, int tier)
     {
-        return ImageNameFor(specialization, tier) is { } imageName
-            ? $"{MainFile.ResPath}/scenes/merchant/specializations/elesis_{imageName}_shop.tscn"
+        return FormFolderFor(specialization, tier) is { } formFolder && ImageNameFor(specialization, tier) is { } imageName
+            ? $"{MainFile.ResPath}/scenes/merchant/specializations/{formFolder}/elesis_{imageName}_shop.tscn"
             : BaseMerchantScene;
     }
 
     public static string RestSiteSceneFor(ElesisSpecialization specialization, int tier)
     {
-        return ImageNameFor(specialization, tier) is { } imageName
-            ? $"{MainFile.ResPath}/scenes/rest_site/specializations/elesis_{imageName}_rest.tscn"
+        return FormFolderFor(specialization, tier) is { } formFolder && ImageNameFor(specialization, tier) is { } imageName
+            ? $"{MainFile.ResPath}/scenes/rest_site/specializations/{formFolder}/elesis_{imageName}_rest.tscn"
             : BaseRestSiteScene;
     }
 
     public static string? ImagePathFor(ElesisSpecialization specialization, int tier)
     {
-        return ImageNameFor(specialization, tier) is { } imageName
-            ? $"{MainFile.ResPath}/images/specializations/{imageName}.png"
+        return FormFolderFor(specialization, tier) is { } formFolder && ImageNameFor(specialization, tier) is { } imageName
+            ? $"{MainFile.ResPath}/images/specializations/{formFolder}/{imageName}.png"
             : null;
     }
 
@@ -131,6 +131,26 @@ public static class ElesisSpecializationVisuals
             (ElesisSpecialization.SoarKnight, 2) => "patrona",
             (ElesisSpecialization.SoarKnight, 3) => "adrestia",
             _ => null
+        };
+    }
+
+    private static string? FormFolderFor(ElesisSpecialization specialization, int tier)
+    {
+        var clampedTier = Math.Clamp(tier, 1, 3);
+        return ImageNameFor(specialization, clampedTier) is { } imageName
+            ? $"{BranchFolderFor(specialization)}/{clampedTier}_{imageName}"
+            : null;
+    }
+
+    private static string BranchFolderFor(ElesisSpecialization specialization)
+    {
+        return specialization switch
+        {
+            ElesisSpecialization.SaberKnight => "saber_knight_path",
+            ElesisSpecialization.PyroKnight => "pyro_knight_path",
+            ElesisSpecialization.DarkKnight => "dark_knight_path",
+            ElesisSpecialization.SoarKnight => "soar_knight_path",
+            _ => "unknown_path"
         };
     }
 }

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3]
-
-[ext_resource type="Texture2D" path="res://Elesis/images/specializations/adrestia.png" id="1_adrestia"]
-
-[node name="ElesisAdrestiaRestVisual" type="Sprite2D"]
-texture = ExtResource("1_adrestia")
-centered = true
-offset = Vector2(0, -125)
-scale = Vector2(0.33, 0.33)

@@ -48,6 +48,15 @@ The current baseline for Elesis art is `Elesis/images/versions/elesis-base-profi
   - upright calm posture for idle/resting assets.
 - A right-facing profile is the preferred baseline for resting, combat idle, shop, and campfire versions.
 
+### Rest Site / Campfire Pose
+
+- Elesis rest-site art should show her seated naturally as if sitting on the campfire log from the Slay the Spire 2 rest-site background.
+- Do not draw the log or any background element into the character asset; the transparent sprite should visually sit on the existing in-game log.
+- Her sword should be straight and placed vertically beside her. The blade tip points down toward the ground, and the grip/pommel points upward where the sword is held.
+- The sword grip must stay straight and aligned with the blade; avoid bent handles, warped guards, or curved sword proportions.
+- Keep the pose calm and readable, with base Elesis' outfit and silhouette preserved.
+- The rest-site sprite should be authored so its seated body and sword contact points can be aligned to the same rest-site scale family as Ironclad's rest image.
+
 ### Required Identity Details
 
 - Base Elesis only unless a specialization is requested.

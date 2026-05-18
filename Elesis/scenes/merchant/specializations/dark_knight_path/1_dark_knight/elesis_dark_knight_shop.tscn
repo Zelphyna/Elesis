@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://Elesis/images/specializations/dark_knight_path/1_dark_knight/dark_knight.png" id="1_dark"]
+
+[node name="ElesisDarkKnightShopVisual" type="Node2D"]
+
+[node name="Visuals" type="Sprite2D" parent="."]
+texture = ExtResource("1_dark")
+centered = true
+position = Vector2(0, -187)
+scale = Vector2(0.374, 0.374)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
