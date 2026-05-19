@@ -13,7 +13,7 @@ func _build_scene() -> void:
 	var background := TextureRect.new()
 	background.texture = BG_TEXTURE
 	background.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	background.stretch_mode = TextureRect.STRETCH_SCALE
+	background.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	background.size = VIRTUAL_SIZE
 	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(background)
