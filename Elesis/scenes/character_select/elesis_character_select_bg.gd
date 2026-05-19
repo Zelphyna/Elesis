@@ -159,9 +159,17 @@ func _apply_tuning_panel_layout() -> void:
 		min(500.0, max(320.0, viewport_size.x - TUNING_PANEL_MARGIN.x * 2.0)),
 		min(_current_tuning_panel_height(), max(56.0, viewport_size.y - TUNING_PANEL_MARGIN.y * 2.0))
 	)
+	var root_transform: Transform2D = get_global_transform_with_canvas()
+	var root_scale: Vector2 = root_transform.get_scale()
+	if absf(root_scale.x) < 0.001:
+		root_scale.x = 1.0
+	if absf(root_scale.y) < 0.001:
+		root_scale.y = 1.0
+
 	_tuning_panel.custom_minimum_size = panel_size
 	_tuning_panel.visible = true
-	_tuning_panel.position = TUNING_PANEL_MARGIN
+	_tuning_panel.position = root_transform.affine_inverse() * TUNING_PANEL_MARGIN
+	_tuning_panel.scale = Vector2(1.0 / absf(root_scale.x), 1.0 / absf(root_scale.y))
 	_tuning_panel.size = panel_size
 
 
