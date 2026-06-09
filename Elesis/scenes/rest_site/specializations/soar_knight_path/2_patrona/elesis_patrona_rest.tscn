@@ -6,6 +6,7 @@
 [node name="ElesisPatronaRestVisual" type="Sprite2D"]
 script = ExtResource("2_slot")
 texture = ExtResource("1_patrona")
+texture_filter = 4
 centered = true
 offset = Vector2(0, -1075)
 scale = Vector2(0.154062, 0.154062)

@@ -6,6 +6,7 @@
 [node name="ElesisSoarKnightRestVisual" type="Sprite2D"]
 script = ExtResource("2_slot")
 texture = ExtResource("1_soar")
+texture_filter = 4
 centered = true
 offset = Vector2(0, -924.5)
 scale = Vector2(0.178765, 0.178765)

@@ -6,6 +6,7 @@
 
 [node name="Visuals" type="Sprite2D" parent="."]
 texture = ExtResource("1_patrona")
+texture_filter = 4
 centered = true
 position = Vector2(0, -187.698)
 scale = Vector2(0.174603, 0.174603)

@@ -6,6 +6,7 @@
 [node name="ElesisSaberKnightRestVisual" type="Sprite2D"]
 script = ExtResource("2_slot")
 texture = ExtResource("1_saber")
+texture_filter = 4
 centered = true
 offset = Vector2(0, -1357)
 scale = Vector2(0.120306, 0.120306)

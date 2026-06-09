@@ -6,6 +6,7 @@
 
 [node name="Visuals" type="Sprite2D" parent="."]
 texture = ExtResource("1_flame")
+texture_filter = 4
 centered = true
 position = Vector2(0, -186.205)
 scale = Vector2(0.227080, 0.227080)

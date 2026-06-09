@@ -6,6 +6,7 @@
 
 [node name="Visuals" type="Sprite2D" parent="."]
 texture = ExtResource("1_soar")
+texture_filter = 4
 centered = true
 position = Vector2(0, -187.304)
 scale = Vector2(0.202600, 0.202600)
