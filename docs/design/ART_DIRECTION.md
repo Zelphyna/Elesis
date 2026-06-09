@@ -57,6 +57,7 @@ The current baseline for Elesis art is `Elesis/images/versions/elesis-base-profi
 - The sword grip must stay straight and aligned with the blade; avoid bent handles, warped guards, or curved sword proportions.
 - Keep the pose calm and readable, with base Elesis' outfit and silhouette preserved.
 - The rest-site sprite should be authored so its seated body and sword contact points can be aligned to the same rest-site scale family as Ironclad's rest image.
+- Rest-site and specialization-event placement must preserve each transparent portrait's source aspect ratio. Resize with uniform scale only; do not force separate width and height values for portraits or inline event images.
 
 ### Required Identity Details
 

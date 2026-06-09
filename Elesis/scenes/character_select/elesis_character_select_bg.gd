@@ -5,9 +5,9 @@ const TUNING_PANEL_START_VISIBLE: bool = false
 const TUNING_PANEL_MARGIN: Vector2 = Vector2(24.0, 24.0)
 const DEFAULT_BACKGROUND_POS: Vector2 = Vector2.ZERO
 const DEFAULT_BACKGROUND_SCALE: float = 1.0
-const DEFAULT_CHARACTER_POS: Vector2 = Vector2(1320.0, 0.0)
-const DEFAULT_CHARACTER_SCALE: float = 0.76
-const DEFAULT_BACKGROUND_INDEX: int = 0
+const DEFAULT_CHARACTER_POS: Vector2 = Vector2(817.0, -54.0)
+const DEFAULT_CHARACTER_SCALE: float = 1.59
+const DEFAULT_BACKGROUND_INDEX: int = 2
 const DEFAULT_CHARACTER_INDEX: int = 0
 const BACKGROUND_OPTIONS: Array[Dictionary] = [
 	{
