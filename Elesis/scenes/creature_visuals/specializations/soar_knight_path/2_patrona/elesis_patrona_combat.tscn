@@ -8,8 +8,8 @@
 unique_name_in_owner = true
 texture = ExtResource("1_patrona")
 centered = true
-position = Vector2(0, -187)
-scale = Vector2(0.374, 0.374)
+position = Vector2(0, -187.698)
+scale = Vector2(0.174603, 0.174603)
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

@@ -7,5 +7,5 @@
 script = ExtResource("2_slot")
 texture = ExtResource("1_adrestia")
 centered = true
-offset = Vector2(0, -125)
-scale = Vector2(0.33, 0.33)
+offset = Vector2(0, -849.5)
+scale = Vector2(0.194461, 0.194461)

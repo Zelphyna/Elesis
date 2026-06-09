@@ -3,6 +3,8 @@ extends Control
 const VIRTUAL_SIZE: Vector2 = Vector2(2564.0, 1204.0)
 const TUNING_PANEL_START_VISIBLE: bool = false
 const TUNING_PANEL_MARGIN: Vector2 = Vector2(24.0, 24.0)
+const DEFAULT_BACKGROUND_POS: Vector2 = Vector2.ZERO
+const DEFAULT_BACKGROUND_SCALE: float = 1.0
 const DEFAULT_CHARACTER_POS: Vector2 = Vector2(1320.0, 0.0)
 const DEFAULT_CHARACTER_SCALE: float = 0.76
 const DEFAULT_BACKGROUND_INDEX: int = 0
@@ -48,6 +50,8 @@ const CHARACTER_OPTIONS: Array[Dictionary] = [
 	},
 ]
 
+static var _saved_background_pos: Vector2 = DEFAULT_BACKGROUND_POS
+static var _saved_background_scale: float = DEFAULT_BACKGROUND_SCALE
 static var _saved_character_pos: Vector2 = DEFAULT_CHARACTER_POS
 static var _saved_character_scale: float = DEFAULT_CHARACTER_SCALE
 static var _saved_background_index: int = DEFAULT_BACKGROUND_INDEX
@@ -63,6 +67,8 @@ var _collapse_button: Button
 var _background_option_label: Label
 var _character_option_label: Label
 var _tuning_sliders: Dictionary = {}
+var _background_pos: Vector2 = DEFAULT_BACKGROUND_POS
+var _background_scale: float = DEFAULT_BACKGROUND_SCALE
 var _character_pos: Vector2 = DEFAULT_CHARACTER_POS
 var _character_scale: float = DEFAULT_CHARACTER_SCALE
 var _background_index: int = DEFAULT_BACKGROUND_INDEX
@@ -140,8 +146,8 @@ func _apply_background_layout() -> void:
 	if _background == null:
 		return
 
-	_background.position = Vector2.ZERO
-	_background.size = VIRTUAL_SIZE
+	_background.position = _background_pos
+	_background.size = VIRTUAL_SIZE * _background_scale
 
 
 func _apply_character_tuning() -> void:
@@ -208,6 +214,9 @@ func _build_tuning_panel() -> PanelContainer:
 	_character_option_label = _last_option_label(_tuning_body)
 	_update_option_labels()
 
+	_tuning_body.add_child(_create_tuning_slider("Fond X", "background_x", -1300.0, 1300.0, _background_pos.x, 1.0))
+	_tuning_body.add_child(_create_tuning_slider("Fond Y", "background_y", -700.0, 700.0, _background_pos.y, 1.0))
+	_tuning_body.add_child(_create_tuning_slider("Fond Scale", "background_scale", 0.5, 3.0, _background_scale, 0.01))
 	_tuning_body.add_child(_create_tuning_slider("X", "x", -300.0, 2600.0, _character_pos.x, 1.0))
 	_tuning_body.add_child(_create_tuning_slider("Y", "y", -700.0, 700.0, _character_pos.y, 1.0))
 	_tuning_body.add_child(_create_tuning_slider("Scale", "scale", 0.25, 3.0, _character_scale, 0.01))
@@ -288,6 +297,12 @@ func _create_tuning_slider(label_text: String, key: String, min_value: float, ma
 
 func _on_tuning_slider_changed(value: float, key: String, value_label: Label) -> void:
 	match key:
+		"background_x":
+			_background_pos.x = value
+		"background_y":
+			_background_pos.y = value
+		"background_scale":
+			_background_scale = value
 		"x":
 			_character_pos.x = value
 		"y":
@@ -296,6 +311,7 @@ func _on_tuning_slider_changed(value: float, key: String, value_label: Label) ->
 			_character_scale = value
 
 	value_label.text = _format_tuning_number(value)
+	_apply_background_layout()
 	_apply_character_tuning()
 	_save_tuning_values()
 
@@ -319,20 +335,28 @@ func _toggle_tuning_panel_collapsed() -> void:
 
 
 func _current_tuning_panel_height() -> float:
-	return 270.0 if _tuning_body == null or _tuning_body.visible else 56.0
+	return 372.0 if _tuning_body == null or _tuning_body.visible else 56.0
 
 
 func _reset_tuning_values() -> void:
+	_background_pos = DEFAULT_BACKGROUND_POS
+	_background_scale = DEFAULT_BACKGROUND_SCALE
 	_character_pos = DEFAULT_CHARACTER_POS
 	_character_scale = DEFAULT_CHARACTER_SCALE
+	_set_slider_value("background_x", _background_pos.x)
+	_set_slider_value("background_y", _background_pos.y)
+	_set_slider_value("background_scale", _background_scale)
 	_set_slider_value("x", _character_pos.x)
 	_set_slider_value("y", _character_pos.y)
 	_set_slider_value("scale", _character_scale)
+	_apply_background_layout()
 	_apply_character_tuning()
 	_save_tuning_values()
 
 
 func _restore_saved_tuning_values() -> void:
+	_background_pos = _saved_background_pos
+	_background_scale = _saved_background_scale
 	_character_pos = _saved_character_pos
 	_character_scale = _saved_character_scale
 	_background_index = clampi(_saved_background_index, 0, BACKGROUND_OPTIONS.size() - 1)
@@ -343,6 +367,8 @@ func _restore_saved_tuning_values() -> void:
 
 
 func _save_tuning_values() -> void:
+	_saved_background_pos = _background_pos
+	_saved_background_scale = _background_scale
 	_saved_character_pos = _character_pos
 	_saved_character_scale = _character_scale
 	_saved_background_index = _background_index
@@ -362,9 +388,15 @@ func _print_tuning_values() -> void:
 
 
 func _tuning_values_text() -> String:
+	var background_size: Vector2 = VIRTUAL_SIZE * _background_scale
 	var character_size: Vector2 = _current_character_texture().get_size() * _character_scale
-	return "character_select background=%s character=%s x=%s y=%s scale=%s width=%s height=%s" % [
+	return "character_select background=%s background_x=%s background_y=%s background_scale=%s background_width=%s background_height=%s character=%s x=%s y=%s scale=%s width=%s height=%s" % [
 		_current_background_label(),
+		_format_tuning_number(_background_pos.x),
+		_format_tuning_number(_background_pos.y),
+		_format_tuning_number(_background_scale),
+		_format_tuning_number(background_size.x),
+		_format_tuning_number(background_size.y),
 		_current_character_label(),
 		_format_tuning_number(_character_pos.x),
 		_format_tuning_number(_character_pos.y),

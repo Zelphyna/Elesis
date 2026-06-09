@@ -7,7 +7,7 @@
 [node name="Visuals" type="Sprite2D" parent="."]
 texture = ExtResource("1_empire")
 centered = true
-position = Vector2(0, -187)
-scale = Vector2(0.374, 0.374)
+position = Vector2(0, -187.000)
+scale = Vector2(0.208589, 0.208589)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

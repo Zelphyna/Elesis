@@ -7,7 +7,7 @@
 [node name="Visuals" type="Sprite2D" parent="."]
 texture = ExtResource("1_pyro")
 centered = true
-position = Vector2(0, -187)
-scale = Vector2(0.374, 0.374)
+position = Vector2(0, -189.409)
+scale = Vector2(0.117499, 0.117499)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
