@@ -1,6 +1,6 @@
 # Asset Pipeline
 
-Generated or hand-authored art should be archived with enough context to reproduce or revise it.
+Generated or hand-authored art should be archived with enough context to reproduce or revise it. For any generated image, use `docs/design/ART_DIRECTION.md` as the primary style reference; `docs/DESIGN.md` is a project summary and must not override the more specific art-direction file.
 
 Suggested archive structure:
 

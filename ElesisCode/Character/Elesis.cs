@@ -18,7 +18,7 @@ public class Elesis : CustomCharacterModel
 {
     public const string CharacterId = "Elesis";
 
-    public static readonly Color Color = new("aab2ff");
+    public static readonly Color Color = new("a32638");
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Neutral;

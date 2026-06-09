@@ -17,6 +17,7 @@ The current baseline for Elesis art is `Elesis/images/versions/elesis-base-profi
 
 ### Palette
 
+- Elesis' primary color is `#A32638`; use it as the base crimson for character branding and card accents.
 - Red is the dominant color, but it should be controlled rather than neon.
 - Black is the secondary support color for sleeves, skirt areas, and inner shadows.
 - Use light, readable silver for armor, boots, and sword metal.
