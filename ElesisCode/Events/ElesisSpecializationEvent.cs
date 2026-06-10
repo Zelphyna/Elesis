@@ -1,10 +1,12 @@
 using BaseLib.Abstracts;
 using Elesis.ElesisCode.Relics;
 using Elesis.ElesisCode.Specializations;
+using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Nodes.Events;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 
@@ -41,10 +43,10 @@ public sealed class ElesisSpecializationEvent : CustomEventModel
         var id = Id.Entry;
         return
         [
-            new EventOption(this, () => Preview(ElesisSpecialization.SaberKnight), $"{id}.pages.INITIAL.options.SABER_KNIGHT"),
-            new EventOption(this, () => Preview(ElesisSpecialization.PyroKnight), $"{id}.pages.INITIAL.options.PYRO_KNIGHT"),
-            new EventOption(this, () => Preview(ElesisSpecialization.DarkKnight), $"{id}.pages.INITIAL.options.DARK_KNIGHT"),
-            new EventOption(this, () => Preview(ElesisSpecialization.SoarKnight), $"{id}.pages.INITIAL.options.SOAR_KNIGHT")
+            new EventOption(this, PreviewSaberKnight, $"{id}.pages.INITIAL.options.SABER_KNIGHT"),
+            new EventOption(this, PreviewPyroKnight, $"{id}.pages.INITIAL.options.PYRO_KNIGHT"),
+            new EventOption(this, PreviewDarkKnight, $"{id}.pages.INITIAL.options.DARK_KNIGHT"),
+            new EventOption(this, PreviewSoarKnight, $"{id}.pages.INITIAL.options.SOAR_KNIGHT")
         ];
     }
 
@@ -58,9 +60,18 @@ public sealed class ElesisSpecializationEvent : CustomEventModel
         ];
     }
 
+    private Task PreviewSaberKnight() => Preview(ElesisSpecialization.SaberKnight);
+
+    private Task PreviewPyroKnight() => Preview(ElesisSpecialization.PyroKnight);
+
+    private Task PreviewDarkKnight() => Preview(ElesisSpecialization.DarkKnight);
+
+    private Task PreviewSoarKnight() => Preview(ElesisSpecialization.SoarKnight);
+
     private Task Preview(ElesisSpecialization specialization)
     {
         _pendingSpecialization = specialization;
+        SetCurrentDescription();
         ReplaceCurrentOptions(PreviewOptions());
         return Task.CompletedTask;
     }
@@ -68,8 +79,14 @@ public sealed class ElesisSpecializationEvent : CustomEventModel
     private Task CancelPreview()
     {
         _pendingSpecialization = ElesisSpecialization.None;
+        SetCurrentDescription();
         ReplaceCurrentOptions(InitialOptions());
         return Task.CompletedTask;
+    }
+
+    private void SetCurrentDescription()
+    {
+        AccessTools.PropertySetter(typeof(EventModel), nameof(Description))?.Invoke(this, [CurrentPageDescription]);
     }
 
     private Task Confirm()
@@ -105,6 +122,9 @@ public sealed class ElesisSpecializationEvent : CustomEventModel
 [HarmonyPatch(typeof(NEventRoom), "RefreshEventState")]
 public static class ElesisSpecializationEventRoomPatch
 {
+    private const float PortraitScale = 0.7f;
+    private static readonly Vector2 PortraitOffset = new(260.0f, 0.0f);
+
     public static void Postfix(NEventRoom __instance, EventModel eventModel)
     {
         if (eventModel is not ElesisSpecializationEvent specializationEvent)
@@ -113,6 +133,20 @@ public static class ElesisSpecializationEventRoomPatch
         }
 
         __instance.SetPortrait(specializationEvent.CreateInitialPortrait());
+        AdjustPortrait(__instance);
         AccessTools.Method(typeof(NEventRoom), "SetDescription")?.Invoke(__instance, [specializationEvent.CurrentPageDescription]);
+    }
+
+    private static void AdjustPortrait(NEventRoom eventRoom)
+    {
+        if (AccessTools.Field(typeof(NEventLayout), "_portrait")?.GetValue(eventRoom.Layout) is not TextureRect portrait)
+        {
+            return;
+        }
+
+        portrait.ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional;
+        portrait.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+        portrait.Scale = Vector2.One * PortraitScale;
+        portrait.Position = PortraitOffset;
     }
 }

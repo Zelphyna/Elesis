@@ -76,6 +76,8 @@ func _ready() -> void:
 	_scene_rest_offset = offset if rest_offset == DEFAULT_REST_OFFSET else rest_offset
 	_scene_rest_scale = scale.x if rest_scale == DEFAULT_REST_SCALE else rest_scale.x
 	_restore_saved_tuning_values()
+	_tuning_panel_visible = true
+	_saved_tuning_panel_visible = true
 	centered = true
 	_apply_rest_tuning()
 
