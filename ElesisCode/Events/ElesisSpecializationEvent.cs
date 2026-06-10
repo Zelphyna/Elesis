@@ -141,9 +141,21 @@ public static class ElesisSpecializationEventRoomPatch
             return;
         }
 
-        __instance.SetPortrait(specializationEvent.CreateInitialPortrait());
-        AdjustPortrait(__instance);
-        AccessTools.Method(typeof(NEventRoom), "SetDescription")?.Invoke(__instance, [specializationEvent.CurrentPageDescription]);
+        RefreshPortraitAndDescription(__instance, specializationEvent);
+        _ = ReadjustPortraitDeferred(__instance);
+    }
+
+    private static void RefreshPortraitAndDescription(NEventRoom eventRoom, ElesisSpecializationEvent specializationEvent)
+    {
+        eventRoom.SetPortrait(specializationEvent.CreateInitialPortrait());
+        AdjustPortrait(eventRoom);
+        AccessTools.Method(typeof(NEventRoom), "SetDescription")?.Invoke(eventRoom, [specializationEvent.CurrentPageDescription]);
+    }
+
+    private static async Task ReadjustPortraitDeferred(NEventRoom eventRoom)
+    {
+        await eventRoom.ToSignal(eventRoom.GetTree(), SceneTree.SignalName.ProcessFrame);
+        AdjustPortrait(eventRoom);
     }
 
     private static void AdjustPortrait(NEventRoom eventRoom)
@@ -159,6 +171,6 @@ public static class ElesisSpecializationEventRoomPatch
         portrait.ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional;
         portrait.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
         portrait.Scale = Vector2.One * PortraitScale;
-        portrait.Position = new Vector2(-viewportWidth * 0.25f, 0.0f);
+        portrait.Position = new Vector2(viewportWidth / 12.0f, 0.0f);
     }
 }

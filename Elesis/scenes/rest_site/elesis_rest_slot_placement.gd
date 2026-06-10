@@ -16,9 +16,12 @@ const DEFAULT_REST_SCALE := Vector2(0.33, 0.33)
 
 
 func _ready() -> void:
+	var scene_rest_offset := offset
+	var scene_rest_scale := scale
+
 	centered = true
-	offset = rest_offset
-	scale = rest_scale
+	offset = scene_rest_offset if rest_offset == DEFAULT_REST_OFFSET else rest_offset
+	scale = scene_rest_scale if rest_scale == DEFAULT_REST_SCALE else rest_scale
 
 	var slot := slot_index_override
 	if slot <= 0:
