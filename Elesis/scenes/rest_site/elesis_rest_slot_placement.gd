@@ -1,6 +1,6 @@
 extends Sprite2D
 
-const TUNING_PANEL_START_VISIBLE: bool = false
+const TUNING_PANEL_START_VISIBLE: bool = true
 const TUNING_PANEL_MARGIN: Vector2 = Vector2(24.0, 24.0)
 const DEFAULT_REST_OFFSET := Vector2(0, -125)
 const DEFAULT_REST_SCALE := Vector2(0.33, 0.33)
@@ -70,6 +70,7 @@ var _tuning_panel_visible: bool = TUNING_PANEL_START_VISIBLE
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	set_process_input(true)
 	set_process_unhandled_input(true)
 	_scene_texture = texture
 	_scene_rest_offset = offset if rest_offset == DEFAULT_REST_OFFSET else rest_offset
@@ -94,7 +95,15 @@ func _ready() -> void:
 	_tuning_layer.add_child(_tuning_panel)
 
 
+func _input(event: InputEvent) -> void:
+	_handle_tuning_shortcut(event)
+
+
 func _unhandled_input(event: InputEvent) -> void:
+	_handle_tuning_shortcut(event)
+
+
+func _handle_tuning_shortcut(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F3:
 		_toggle_tuning_panel_visible()
 		get_viewport().set_input_as_handled()

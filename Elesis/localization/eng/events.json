@@ -1,6 +1,6 @@
 {
   "ELESIS-ELESIS_SPECIALIZATION_EVENT.title": "Elesis' Specialization",
-  "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.INITIAL.description": "The Belder Knight Emblem burns with stored experience.\n\nChoose Elesis' specialization for the rest of this run.",
+  "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.INITIAL.description": "The Belder Knight Emblem burns with stored experience.\n\nChoose a path to preview its specialization portrait before confirming.",
   "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.INITIAL.options.SABER_KNIGHT.title": "Choose Saber Knight",
   "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.INITIAL.options.SABER_KNIGHT.description": "Free.\nElesis becomes Saber Knight.\nWhenever Elesis gains [blue]Chivalry[/blue], gain 1 additional [blue]Chivalry[/blue].",
   "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.INITIAL.options.PYRO_KNIGHT.title": "Choose Pyro Knight",
@@ -19,5 +19,10 @@
   "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.pages.INITIAL.description": "The Belder Knight Emblem reaches 55 experience.\n\nElesis unlocks the final step of her chosen path.\nHer combat appearance changes again, and her specialization passive reaches its full power.",
   "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.pages.INITIAL.options.CONFIRM.title": "Accept Final Evolution",
   "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.pages.INITIAL.options.CONFIRM.description": "Free.\nUpgrade Elesis' specialization passive to 3.",
-  "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.pages.DONE.description": "Elesis' path is fully awakened for this run."
+  "ELESIS-ELESIS_FINAL_EVOLUTION_EVENT.pages.DONE.description": "Elesis' path is fully awakened for this run.",
+  "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.PREVIEW.description": "Elesis studies the path shown at the left.\n\nConfirm this specialization or go back to choose another path.",
+  "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.PREVIEW.options.CONFIRM.title": "Confirm Specialization",
+  "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.PREVIEW.options.CONFIRM.description": "Free.\nAccept the displayed specialization for the rest of this run.",
+  "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.PREVIEW.options.CANCEL.title": "Go Back",
+  "ELESIS-ELESIS_SPECIALIZATION_EVENT.pages.PREVIEW.options.CANCEL.description": "Return to the four specialization choices without changing Elesis."
 }
