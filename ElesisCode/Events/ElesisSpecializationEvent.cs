@@ -133,7 +133,6 @@ public sealed class ElesisSpecializationEvent : CustomEventModel
 public static class ElesisSpecializationEventRoomPatch
 {
     private const float PortraitScale = 0.7f;
-    private static readonly Vector2 PortraitOffset = new(-260.0f, 0.0f);
 
     public static void Postfix(NEventRoom __instance, EventModel eventModel)
     {
@@ -154,9 +153,12 @@ public static class ElesisSpecializationEventRoomPatch
             return;
         }
 
+        var viewport = eventRoom.GetViewport();
+        var viewportWidth = viewport == null ? 1920.0f : viewport.GetVisibleRect().Size.X;
+
         portrait.ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional;
         portrait.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
         portrait.Scale = Vector2.One * PortraitScale;
-        portrait.Position = PortraitOffset;
+        portrait.Position = new Vector2(-viewportWidth * 0.25f, 0.0f);
     }
 }
