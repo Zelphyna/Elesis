@@ -2,6 +2,7 @@ extends Sprite2D
 
 const DEFAULT_REST_OFFSET := Vector2(0, -125)
 const DEFAULT_REST_SCALE := Vector2(0.33, 0.33)
+const REST_SCALE_MULTIPLIER := 0.4
 
 @export var slot_index_override := 0
 @export var rest_offset := DEFAULT_REST_OFFSET
@@ -21,7 +22,7 @@ func _ready() -> void:
 
 	centered = true
 	offset = scene_rest_offset if rest_offset == DEFAULT_REST_OFFSET else rest_offset
-	scale = scene_rest_scale if rest_scale == DEFAULT_REST_SCALE else rest_scale
+	scale = (scene_rest_scale if rest_scale == DEFAULT_REST_SCALE else rest_scale) * REST_SCALE_MULTIPLIER
 
 	var slot := slot_index_override
 	if slot <= 0:

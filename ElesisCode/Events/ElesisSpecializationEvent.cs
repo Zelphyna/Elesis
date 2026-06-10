@@ -171,6 +171,6 @@ public static class ElesisSpecializationEventRoomPatch
         portrait.ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional;
         portrait.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
         portrait.Scale = Vector2.One * PortraitScale;
-        portrait.Position = new Vector2(viewportWidth / 12.0f, 0.0f);
+        portrait.Position = new Vector2(-viewportWidth / 12.0f, 0.0f);
     }
 }

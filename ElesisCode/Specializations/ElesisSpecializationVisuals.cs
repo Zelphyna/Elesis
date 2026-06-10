@@ -1,6 +1,8 @@
 using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.RestSite;
+using MegaCrit.Sts2.Core.Nodes.Screens.Shops;
 using MegaCrit.Sts2.Core.Runs;
 using Elesis.ElesisCode.Relics;
 
@@ -15,11 +17,16 @@ public static class ElesisSpecializationVisuals
     public static void RegisterSceneConversions()
     {
         BaseCombatScene.RegisterSceneForConversion<NCreatureVisuals>();
+        BaseMerchantScene.RegisterSceneForConversion<NMerchantCharacter>();
+        BaseRestSiteScene.RegisterSceneForConversion<NRestSiteCharacter>();
+
         foreach (var specialization in Branches())
         {
             for (var tier = 1; tier <= 3; tier++)
             {
                 SceneFor(specialization, tier).RegisterSceneForConversion<NCreatureVisuals>();
+                MerchantSceneFor(specialization, tier).RegisterSceneForConversion<NMerchantCharacter>();
+                RestSiteSceneFor(specialization, tier).RegisterSceneForConversion<NRestSiteCharacter>();
             }
         }
     }
