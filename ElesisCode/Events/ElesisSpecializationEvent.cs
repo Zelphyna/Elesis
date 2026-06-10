@@ -133,7 +133,7 @@ public sealed class ElesisSpecializationEvent : CustomEventModel
 public static class ElesisSpecializationEventRoomPatch
 {
     private const float PortraitScale = 0.7f;
-    private static readonly Vector2 PortraitOffset = new(260.0f, 0.0f);
+    private static readonly Vector2 PortraitOffset = new(-260.0f, 0.0f);
 
     public static void Postfix(NEventRoom __instance, EventModel eventModel)
     {

@@ -93,9 +93,7 @@ public static class ElesisSpecializationVisuals
 
     public static string? EventPortraitPathFor(ElesisSpecialization specialization, int tier)
     {
-        return ImageNameFor(specialization, tier) is { } imageName
-            ? $"{MainFile.ResPath}/images/events/{imageName}_event_portrait.png"
-            : null;
+        return ImagePathFor(specialization, tier);
     }
 
     public static string DisplayNameFor(ElesisSpecialization specialization, int tier)

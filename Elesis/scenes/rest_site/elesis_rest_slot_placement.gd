@@ -91,11 +91,17 @@ func _ready() -> void:
 	_tuning_layer = CanvasLayer.new()
 	_tuning_layer.name = "ElesisRestSitePlacementTunerLayer"
 	_tuning_layer.layer = 100
-	add_child(_tuning_layer)
+	_tuning_layer.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().root.add_child(_tuning_layer)
 	_tuning_panel = _build_tuning_panel()
 	_tuning_panel.visible = _tuning_panel_visible
 	_tuning_layer.add_child(_tuning_panel)
 	_apply_tuning_panel_layout()
+
+
+func _exit_tree() -> void:
+	if is_instance_valid(_tuning_layer):
+		_tuning_layer.queue_free()
 
 
 func _input(event: InputEvent) -> void:
@@ -220,7 +226,7 @@ func _apply_tuning_panel_layout() -> void:
 
 	_tuning_panel.custom_minimum_size = panel_size
 	_tuning_panel.visible = true
-	_tuning_panel.position = TUNING_PANEL_MARGIN
+	_tuning_panel.position = Vector2(viewport_size.x - panel_size.x - TUNING_PANEL_MARGIN.x, TUNING_PANEL_MARGIN.y)
 	_tuning_panel.scale = Vector2.ONE
 	_tuning_panel.size = panel_size
 
