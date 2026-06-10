@@ -95,6 +95,7 @@ func _ready() -> void:
 	_tuning_panel = _build_tuning_panel()
 	_tuning_panel.visible = _tuning_panel_visible
 	_tuning_layer.add_child(_tuning_panel)
+	_apply_tuning_panel_layout()
 
 
 func _input(event: InputEvent) -> void:

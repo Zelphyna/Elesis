@@ -73,6 +73,7 @@ public sealed class ElesisSpecializationEvent : CustomEventModel
         _pendingSpecialization = specialization;
         SetCurrentDescription();
         ReplaceCurrentOptions(PreviewOptions());
+        RefreshOpenEventRoom();
         return Task.CompletedTask;
     }
 
@@ -81,7 +82,16 @@ public sealed class ElesisSpecializationEvent : CustomEventModel
         _pendingSpecialization = ElesisSpecialization.None;
         SetCurrentDescription();
         ReplaceCurrentOptions(InitialOptions());
+        RefreshOpenEventRoom();
         return Task.CompletedTask;
+    }
+
+    private void RefreshOpenEventRoom()
+    {
+        if (NEventRoom.Instance != null)
+        {
+            AccessTools.Method(typeof(NEventRoom), "RefreshEventState")?.Invoke(NEventRoom.Instance, [this]);
+        }
     }
 
     private void SetCurrentDescription()
