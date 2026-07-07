@@ -12,7 +12,13 @@ Current implementation status:
 - `CounterGuard` is a 1-cost Basic Skill: gain 6 Counter Attack, upgrade +3.
 - `BurningEdge` is a 1-cost Basic Skill: apply 5 Burn to an enemy, upgrade +3.
 - Starting deck is 10 cards: 4 `ElesisStrike`, 4 `ElesisDefend`, 1 `CounterGuard`, and 1 `BurningEdge`.
-- Prototype cards share the placeholder card art until dedicated assets are produced.
+- The current cards have dedicated generated card portraits.
+
+## Card Art Rules
+
+- Attack card images must use a red background as the actual art background, not as a contour or frame.
+- Skill card images must use a blue background as the actual art background, not as a contour or frame.
+- Keep Elesis card art simple, readable, and aligned with the base Elesis art direction: clean anime game-art, crisp cel-shading, visible dark outlines, controlled crimson, black support tones, light silver armor, and restrained warm-gold accents.
 
 ## Design Target
 

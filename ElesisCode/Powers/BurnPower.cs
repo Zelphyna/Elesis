@@ -28,7 +28,7 @@ public sealed class BurnPower : ElesisPower
         }
 
         Flash();
-        await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Move, Owner);
+        await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
 
         var burnLoss = Math.Max(1, (int)Math.Ceiling(Amount / 2m));
         if (burnLoss >= Amount)

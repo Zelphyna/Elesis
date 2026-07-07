@@ -9,7 +9,7 @@ Use this file for the character's confirmed mechanical identity, archetypes, and
 - Multi-hit enemy attacks trigger Counter Attack once per hit. For example, 6 Counter Attack returns 6 damage against a single 12-damage hit, and 18 total damage against a 3x3 attack.
 - Enemies that do not attack do not take Counter Attack damage.
 - Counter Attack expires on the same combat timing as normal Block cleanup, after the enemy side has had its chance to attack.
-- Burn is a visible enemy debuff. Before the burned monster acts, it takes damage equal to its Burn, then loses half of its Burn, rounded up.
+- Burn is a visible enemy debuff. Before the burned monster acts, it takes unpowered, unblockable damage equal to its Burn, then loses half of its Burn, rounded up.
 - The current starter deck uses 4 `ElesisStrike`, 4 `ElesisDefend`, 1 `CounterGuard`, and 1 `BurningEdge`.
 - `CounterGuard` is a 1-cost Skill that gives 6 Counter Attack and upgrades by 3.
 - `BurningEdge` is a 1-cost Skill that applies 5 Burn to an enemy and upgrades by 3.
