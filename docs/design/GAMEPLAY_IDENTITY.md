@@ -8,6 +8,7 @@ Use this file for the character's confirmed mechanical identity, archetypes, and
 - Counter Attack is a visible counter power. When Elesis is attacked, she deals Counter Attack damage back to the attacker once for each hit received.
 - Multi-hit enemy attacks trigger Counter Attack once per hit. For example, 6 Counter Attack returns 6 damage against a single 12-damage hit, and 18 total damage against a 3x3 attack.
 - Enemies that do not attack do not take Counter Attack damage.
+- Counter Attack expires on the same combat timing as normal Block cleanup, after the enemy side has had its chance to attack.
 - Burn is a visible enemy debuff. Before the burned monster acts, it takes damage equal to its Burn, then loses half of its Burn, rounded up.
 - The current starter deck uses 4 `ElesisStrike`, 4 `ElesisDefend`, 1 `CounterGuard`, and 1 `BurningEdge`.
 - `CounterGuard` is a 1-cost Skill that gives 6 Counter Attack and upgrades by 3.
@@ -18,7 +19,7 @@ Use this file for the character's confirmed mechanical identity, archetypes, and
 
 These notes are proposed design direction, not confirmed implementation. They should be validated against playtests and the current STS2/BaseLib API before code changes.
 
-- Decide whether Counter Attack should be retained for the full combat, last for one turn, or decay by a fixed amount at turn end.
+- Confirm in-game that Counter Attack expires at the same point as normal Block cleanup in extra-turn and Block-retention edge cases.
 - Confirm that Burn timing fires before enemy attacks in the current STS2 turn sequence.
 - Build future cards around preparing for enemy attack patterns: efficient Counter Attack gains, Block plus Counter Attack, and payoffs for surviving multi-hit turns.
 - Avoid adding unrelated stance, fire, or resource loops until Counter Attack is tested as the primary identity.
