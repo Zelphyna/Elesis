@@ -34,9 +34,8 @@ public sealed class ElesisExperienceReward : CustomReward
         }
     }
 
-    public override Task Populate()
+    public override void Populate()
     {
-        return Task.CompletedTask;
     }
 
     protected override Task<bool> OnSelect()

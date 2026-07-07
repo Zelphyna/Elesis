@@ -1,12 +1,6 @@
 {
-  "ELESIS-VITALITY.title": "Vitality",
-  "ELESIS-VITALITY.description": "Vitality cards build Chivalry.\nWhen a Vitality card causes Elesis to reach 5 Chivalry, she spends 5 Chivalry and draws 1 card.",
-  "ELESIS-DESTRUCTION.title": "Destruction",
-  "ELESIS-DESTRUCTION.description": "Destruction cards spend 5 Chivalry for an immediate bonus.\nAttacks gain +8 damage.\nAttack-block cards also gain +5 Block.",
-  "ELESIS-FLAME.title": "Flame",
-  "ELESIS-FLAME.description": "Flame cards add Flame to Elesis.\nNon-Flame attacks consume all Flame to deal that much extra damage.",
-  "ELESIS-PARRY.title": "Parry",
-  "ELESIS-PARRY.description": "Parry cards are defensive knight techniques.\nThey protect Elesis or prepare her Chivalry and Flame rhythm.",
-  "ELESIS-CHIVALRY.title": "Chivalry",
-  "ELESIS-CHIVALRY.description": "Chivalry is Elesis' stance rhythm.\nVitality cards can spend 5 Chivalry to draw 1 card.\nDestruction cards can spend 5 Chivalry for bonus damage or Block."
+  "ELESIS-COUNTERATTACK.title": "Counter Attack",
+  "ELESIS-COUNTERATTACK.description": "When Elesis is attacked, deal that much damage back to the attacker once for each hit received.",
+  "ELESIS-BURN.title": "Burn",
+  "ELESIS-BURN.description": "Before a monster acts, it takes damage equal to its Burn, then loses half of its Burn, rounded up."
 }

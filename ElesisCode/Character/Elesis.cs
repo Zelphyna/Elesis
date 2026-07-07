@@ -62,8 +62,8 @@ public class Elesis : CustomCharacterModel
         ModelDb.Card<ElesisDefend>(),
         ModelDb.Card<ElesisDefend>(),
         ModelDb.Card<ElesisDefend>(),
-        ModelDb.Card<QuickStep>(),
-        ModelDb.Card<ClaymoreArc>()
+        ModelDb.Card<CounterGuard>(),
+        ModelDb.Card<BurningEdge>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics => [

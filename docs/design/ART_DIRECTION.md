@@ -73,7 +73,7 @@ The current baseline for Elesis art is `Elesis/images/versions/elesis-base-profi
 - Red gauntlets.
 - Red boots with silver metal toe armor.
 - Large red-and-white sword.
-- Flame effects are optional for idle/resting assets and should be absent or small when used.
+- Fire effects are optional for idle/resting assets and should be absent or small when used.
 
 ### Design Direction Summary
 

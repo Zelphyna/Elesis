@@ -1,22 +1,15 @@
-using Elesis.ElesisCode.Powers;
 using Elesis.ElesisCode.Rewards;
 using Elesis.ElesisCode.Specializations;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Saves.Runs;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace Elesis.ElesisCode.Relics;
 
 public sealed class BelderKnightEmblem : ElesisRelic
 {
-    private const int StartingChivalry = 2;
     private int _experience;
     private bool _combatExperienceClaimedAwaitingMap;
     private int _evolutionTier;
@@ -121,13 +114,6 @@ public sealed class BelderKnightEmblem : ElesisRelic
     }
 
     public ElesisSpecialization Specialization => (ElesisSpecialization)SavedSpecialization;
-    public int SpecializationBonus => Specialization == ElesisSpecialization.None ? 0 : Math.Max(1, EvolutionTier);
-
-    public override async Task BeforeCombatStart()
-    {
-        Flash();
-        await PowerCmd.Apply<ChivalryPower>(Owner.Creature, StartingChivalry, Owner.Creature, null, true);
-    }
 
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
@@ -197,31 +183,6 @@ public sealed class BelderKnightEmblem : ElesisRelic
         PendingEvolutionTier = 0;
         Status = RelicStatus.Active;
         Flash();
-    }
-
-    public override decimal ModifyPowerAmountGiven(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
-    {
-        if (giver != Owner.Creature)
-        {
-            return amount;
-        }
-
-        return Specialization switch
-        {
-            ElesisSpecialization.SaberKnight when power is ChivalryPower => amount + SpecializationBonus,
-            ElesisSpecialization.PyroKnight when power is FlamePower => amount + SpecializationBonus,
-            _ => amount
-        };
-    }
-
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
-    {
-        return Specialization == ElesisSpecialization.DarkKnight && dealer == Owner.Creature ? SpecializationBonus : 0;
-    }
-
-    public override decimal ModifyBlockAdditive(Creature target, decimal block, ValueProp props, CardModel? cardSource, CardPlay? cardPlay)
-    {
-        return Specialization == ElesisSpecialization.SoarKnight && target == Owner.Creature ? SpecializationBonus : 0;
     }
 
     public override bool TryModifyRewards(Player player, List<Reward> rewards, AbstractRoom? room)
