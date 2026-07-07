@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbe5fm4gdn4ru"
-path="res://.godot/imported/burningedge.png-d030872eb2fab5ebcacc1e0ac80e5488.ctex"
+path="res://.godot/imported/burning_edge.png-a5b85bb8221bf827dc7a8eb2666716dc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Elesis/images/card_portraits/big/burningedge.png"
-dest_files=["res://.godot/imported/burningedge.png-d030872eb2fab5ebcacc1e0ac80e5488.ctex"]
+source_file="res://Elesis/images/card_portraits/big/burning_edge.png"
+dest_files=["res://.godot/imported/burning_edge.png-a5b85bb8221bf827dc7a8eb2666716dc.ctex"]
 
 [params]
 

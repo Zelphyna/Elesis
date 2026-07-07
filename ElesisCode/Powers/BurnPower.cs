@@ -16,8 +16,7 @@ public sealed class BurnPower : ElesisPower
     public override string CustomPackedIconPath => "burn_power.png".PowerImagePath();
     public override string CustomBigIconPath => "burn_power.png".BigPowerImagePath();
 
-    public override async Task BeforeSideTurnStart(
-        PlayerChoiceContext choiceContext,
+    public override async Task AfterSideTurnStart(
         CombatSide side,
         IReadOnlyList<Creature> participants,
         ICombatState combatState)
@@ -28,7 +27,12 @@ public sealed class BurnPower : ElesisPower
         }
 
         Flash();
-        await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
+        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner, Amount, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
+
+        if (!Owner.IsAlive)
+        {
+            return;
+        }
 
         var burnLoss = Math.Max(1, (int)Math.Ceiling(Amount / 2m));
         if (burnLoss >= Amount)
@@ -37,7 +41,7 @@ public sealed class BurnPower : ElesisPower
         }
         else
         {
-            await PowerCmd.ModifyAmount(choiceContext, this, -burnLoss, Owner, null, true);
+            await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(), this, -burnLoss, Owner, null, true);
         }
     }
 }

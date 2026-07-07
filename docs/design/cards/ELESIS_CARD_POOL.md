@@ -19,6 +19,7 @@ Current implementation status:
 - Attack card images must use a red background as the actual art background, not as a contour or frame.
 - Skill card images must use a blue background as the actual art background, not as a contour or frame.
 - Keep Elesis card art simple, readable, and aligned with the base Elesis art direction: clean anime game-art, crisp cel-shading, visible dark outlines, controlled crimson, black support tones, light silver armor, and restrained warm-gold accents.
+- Card portrait asset names must match the runtime card id after prefix removal in snake_case, for example `elesis_strike.png`, `counter_guard.png`, and `burning_edge.png`.
 
 ## Design Target
 

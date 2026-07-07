@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfoveb7t0n6y7"
-path="res://.godot/imported/counterguard.png-f6a71357113a5f3f8064714ee4a0981e.ctex"
+uid="uid://1hibkgp0aofq"
+path="res://.godot/imported/elesis_strike.png-dd392563c71190136b2c590f43194bd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Elesis/images/card_portraits/counterguard.png"
-dest_files=["res://.godot/imported/counterguard.png-f6a71357113a5f3f8064714ee4a0981e.ctex"]
+source_file="res://Elesis/images/card_portraits/elesis_strike.png"
+dest_files=["res://.godot/imported/elesis_strike.png-dd392563c71190136b2c590f43194bd0.ctex"]
 
 [params]
 

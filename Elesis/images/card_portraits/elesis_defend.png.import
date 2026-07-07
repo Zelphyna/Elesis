@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deypknlfuxoh7"
-path="res://.godot/imported/elesisstrike.png-0003f3c8cb59fd56ef22e32a56255f5a.ctex"
+uid="uid://b3ylxh76l6jv6"
+path="res://.godot/imported/elesis_defend.png-d110880ad920d4439817f843e53c5a72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Elesis/images/card_portraits/big/elesisstrike.png"
-dest_files=["res://.godot/imported/elesisstrike.png-0003f3c8cb59fd56ef22e32a56255f5a.ctex"]
+source_file="res://Elesis/images/card_portraits/elesis_defend.png"
+dest_files=["res://.godot/imported/elesis_defend.png-d110880ad920d4439817f843e53c5a72.ctex"]
 
 [params]
 

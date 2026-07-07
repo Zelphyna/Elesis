@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bivs0m5xovovt"
-path="res://.godot/imported/elesisdefend.png-43ed297ea4da17acb5820af06be1934f.ctex"
+uid="uid://i50ym2xquieu"
+path="res://.godot/imported/burning_edge.png-d3e16fe0191851f3492b549b6b236ecc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Elesis/images/card_portraits/big/elesisdefend.png"
-dest_files=["res://.godot/imported/elesisdefend.png-43ed297ea4da17acb5820af06be1934f.ctex"]
+source_file="res://Elesis/images/card_portraits/burning_edge.png"
+dest_files=["res://.godot/imported/burning_edge.png-d3e16fe0191851f3492b549b6b236ecc.ctex"]
 
 [params]
 
