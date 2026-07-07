@@ -6,7 +6,7 @@
 - `Elesis.csproj`: C# project and BaseLib dependency setup.
 - `Elesis/`: Godot resources, localization, and runtime assets included in the `.pck`.
 - `ElesisCode/`: C# mod code.
-- `ElesisCode/MainFile.cs`: mod initializer; registers the custom Elesis character with BaseLib.
+- `ElesisCode/MainFile.cs`: mod initializer. BaseLib's current model database patches discover `CustomCharacterModel` implementations; the initializer keeps the mod-specific event, reward, specialization, and scene-conversion setup.
 - `ElesisCode/Character/Elesis.cs`: custom character model. The static `Elesis.Color` value is the canonical character color for name, card shader accent, and deck-entry card color. Elesis intentionally extends `CustomCharacterModel`, matching the working Hologirl mod pattern; `PlaceholderCharacterModel` retained vanilla fallback icon behavior and made character selection unreliable. Elesis uses static scenes for combat, merchant, and rest-site visuals; these scenes prefer official Elesis portrait assets when available and tune scale per context. Ironclad fallbacks remain for audio, transition, trail, and multiplayer hand textures until custom STS2-safe replacements exist. The run/top-panel icon is generated from Elesis' custom icon texture, and the multiplayer map outline uses the Elesis map marker texture.
 - `ElesisCode/Cards/ElesisKeywords.cs`: custom BaseLib `CardKeyword` definitions used to show hover-tip boxes for Elesis mechanics on card hover.
 - `Elesis/scenes/character_select/elesis_character_select_bg.gd`: selected-character background scene. It renders a fixed `2564x1204` background layer plus a separate transparent Elesis character layer. The temporary F3 image placement tuner is adapted from the working Hologirl mod pattern; the panel can cycle through generated background/model candidates, adjusts X, Y, and scale independently for both the background and Elesis character layers, and copies the current background/model/placement values to the clipboard for manual calibration. Keep it scene-local while art placement is still being tuned.
@@ -19,6 +19,7 @@
 ## Build Flow
 
 - `scripts/build.sh` builds the C# project and copies DLL/JSON outputs to the local STS2 mods folder.
+- The manifest uses the current template dependency shape, `{"id": "BaseLib", "min_version": "..."}`. `Elesis.csproj` mirrors the live STS2 character template by updating that `min_version` from the resolved `Alchyr.Sts2.BaseLib` NuGet package when Godot's restore assets exist, so the installed BaseLib mod must be at least the version Elesis was compiled against.
 - `scripts/package.sh` creates `dist/Elesis-<version>.zip`.
 - `scripts/package.sh` automatically uses Godot export when `Elesis/` contains `.tscn` scenes, because the quick PCK packer skips those files.
 - Use `GODOT_BIN=/path/to/godot` when Godot export is selected. `ELESIS_PCK_EXPORTER=quick|godot` remains available for explicit overrides.

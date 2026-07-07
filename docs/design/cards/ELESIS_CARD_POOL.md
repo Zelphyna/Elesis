@@ -14,6 +14,72 @@ Current implementation status:
 - Prototype cards share the placeholder card art until dedicated assets are produced.
 - Starting deck is 10 cards: 4 `ElesisStrike`, 4 `ElesisDefend`, 1 `QuickStep`, and 1 `ClaymoreArc`. `QuickStep` introduces Vitality/Chivalry cycling, while `ClaymoreArc` gives the starter deck a first Destruction payoff once Chivalry reaches 5.
 
+## STS2 Vanilla Pool Baseline
+
+Confirmed from the local Slay the Spire 2 `v0.103.2` assembly (`release_info.json` commit `89765e1e`, dated 2026-04-16). The counted vanilla character pools are `IroncladCardPool`, `SilentCardPool`, `DefectCardPool`, `NecrobinderCardPool`, and `RegentCardPool`.
+
+Vanilla pool size:
+
+| Character | Total | Basic | Common | Uncommon | Rare | Ancient |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Ironclad | 87 | 3 | 20 | 36 | 26 | 2 |
+| Silent | 88 | 4 | 20 | 36 | 26 | 2 |
+| Defect | 88 | 4 | 20 | 36 | 26 | 2 |
+| Necrobinder | 88 | 4 | 20 | 36 | 26 | 2 |
+| Regent | 88 | 4 | 20 | 36 | 26 | 2 |
+
+Draftable Common/Uncommon/Rare type counts:
+
+| Character | Draftable total | Attacks | Skills | Powers |
+| --- | ---: | ---: | ---: | ---: |
+| Ironclad | 82 | 34 | 28 | 20 |
+| Silent | 82 | 25 | 39 | 18 |
+| Defect | 82 | 28 | 35 | 19 |
+| Necrobinder | 82 | 32 | 33 | 17 |
+| Regent | 82 | 29 | 35 | 18 |
+| Vanilla median target | 82 | 29 | 35 | 18 |
+
+Rarity/type shape by character:
+
+| Character | Common A/S/P | Uncommon A/S/P | Rare A/S/P |
+| --- | ---: | ---: | ---: |
+| Ironclad | 13 / 7 / 0 | 14 / 13 / 9 | 7 / 8 / 11 |
+| Silent | 9 / 11 / 0 | 11 / 17 / 8 | 5 / 11 / 10 |
+| Defect | 12 / 8 / 0 | 8 / 18 / 10 | 8 / 9 / 9 |
+| Necrobinder | 12 / 8 / 0 | 12 / 15 / 9 | 8 / 10 / 8 |
+| Regent | 9 / 11 / 0 | 11 / 17 / 8 | 9 / 7 / 10 |
+| Median target | 11 / 8 / 0 | 11 / 17 / 9 | 8 / 9 / 10 |
+
+Elesis current shape:
+
+| Scope | Total | Attacks | Skills | Powers |
+| --- | ---: | ---: | ---: | ---: |
+| All implemented | 40 | 26 | 11 | 3 |
+| Draftable Common/Uncommon/Rare | 36 | 24 | 9 | 3 |
+
+Elesis current rarity/type shape:
+
+| Rarity | Attacks | Skills | Powers | Total |
+| --- | ---: | ---: | ---: | ---: |
+| Basic | 2 | 2 | 0 | 4 |
+| Common | 5 | 4 | 1 | 10 |
+| Uncommon | 10 | 2 | 1 | 13 |
+| Rare | 9 | 3 | 1 | 13 |
+
+Design target for parity:
+
+- Keep the 10-card starting deck shape unless a playtest proves it should change: 4 Strikes, 4 Defends, and 2 character-defining Basic cards.
+- Bring the draftable pool toward 82 cards: 20 Common, 36 Uncommon, 26 Rare. Ancient cards are optional until the unlock/timeline purpose is confirmed.
+- Use the vanilla median as the default target: about 29 Attacks, 35 Skills, and 18 Powers across Common/Uncommon/Rare.
+- For Elesis, that means adding roughly 46 draftable cards: about 5 Attacks, 26 Skills, and 15 Powers.
+- Do not add Common Powers just to fill quota. Vanilla character pools have 0 Common Powers in `v0.103.2`; place most Powers at Uncommon and Rare.
+- Recommended next content target:
+  - Common: add 10 cards, aiming for +6 Attacks and +4 Skills, keeping Common Powers at 1 only if `BelderDiscipline` remains Common for mechanic onboarding.
+  - Uncommon: add 23 cards, aiming for about +1 Attack, +15 Skills, +7 Powers.
+  - Rare: add 13 cards, aiming for about +6 Skills and +7 Powers; avoid adding more Rare Attacks unless an existing Rare Attack is moved or cut.
+
+Confirmed implication: Elesis currently reads as an attack-heavy prototype, not a full STS2-style character pool. The next balance pass should primarily create Skills and Powers that support Chivalry, Flame, Destruction, and Parry decisions rather than more direct damage cards.
+
 ## Basic
 
 - `ElesisStrike`: 1-cost Attack, 2 damage 3 times, upgrades by 1 per hit.

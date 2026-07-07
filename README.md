@@ -4,7 +4,7 @@ Playable Slay the Spire 2 character mod for Elesis, based on her base Elsword id
 
 ## Setup
 
-1. Install or locate Slay the Spire 2 and BaseLib.
+1. Install or locate Slay the Spire 2 and BaseLib. The current manifest follows the live character template and requires STS2 `0.107.0` or newer plus BaseLib `3.3.5` or newer.
 2. Set `STS2_DIR` or `STS2_DATA_DIR` if auto-discovery in `Sts2PathDiscovery.props` does not find the game.
 3. Build with:
 
@@ -39,4 +39,5 @@ scripts/package.sh
 - Runtime assets live under `Elesis/`.
 - C# mod code lives under `ElesisCode/`.
 - The mod manifest is `Elesis.json`.
+- The BaseLib dependency in `Elesis.json` is versioned with `min_version`; the build updates it from the resolved `Alchyr.Sts2.BaseLib` NuGet version when Godot's restore assets are present.
 - Confirmed design decisions are tracked in `docs/`.

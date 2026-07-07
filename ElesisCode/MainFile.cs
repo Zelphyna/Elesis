@@ -1,6 +1,5 @@
 using Godot;
 using HarmonyLib;
-using BaseLib.Abstracts;
 using Elesis.ElesisCode.Character;
 using Elesis.ElesisCode.Events;
 using Elesis.ElesisCode.Rewards;
@@ -27,6 +26,5 @@ public partial class MainFile : Node
         new ElesisExperienceReward(null!, 0).Initialize();
         ElesisSpecializationController.Register();
         ElesisSpecializationVisuals.RegisterSceneConversions();
-        ModelDbCustomCharacters.Register(new Character.Elesis());
     }
 }
