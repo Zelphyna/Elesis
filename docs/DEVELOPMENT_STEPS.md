@@ -1,6 +1,6 @@
 # Development Steps
 
-Last updated: 2026-07-26.
+Last updated: 2026-07-27.
 
 ## Current Confirmed State
 
@@ -12,17 +12,22 @@ Last updated: 2026-07-26.
 - [x] Expand the card surface to 88 cards: 4 Basic, 20 Common, 36 Uncommon, 26 Rare, and 2 Ancient.
 - [x] Implement a dedicated upgrade for every card and 18 distinct durable card Powers.
 - [x] Generate a dedicated type-coded portrait for every card and retain the full-size generation sources.
+- [x] Add an interim animated combat surface: all Elesis forms breathe while idle and respond to STS2's attack trigger with a sword lunge, swing, and slash arc; Strike uses the slash hit effect.
+- [x] Convert the supplied TDA Empire Sword PMX and Claymore locally through Blender/MMD Tools into a 6.8 MB Godot GLB with a 672-bone skin plus `idle` and `attack` clips; keep every source and derivative ignored under the archive's no-redistribution terms.
+- [x] Render the rigged model inside every combat scene through a transparent `SubViewport`, retain the portrait fallback, and validate the real combat scene's idle, windup, swing, follow-through, and return-to-idle frames under Godot 4.5.1.
 
 ## Next Validation Pass
 
 - [x] Run `scripts/build.sh` on the current machine. The card-pool build passes with 0 warnings and 0 errors; quick PCK packing remains intentionally skipped because the project contains `.tscn` scenes and must use Godot export.
 - [x] Run `scripts/package.sh` with the Godot exporter path and confirm `dist/Elesis-v0.4.62.zip` is produced with the DLL, PCK, and manifest.
+- [ ] Load Elesis in combat and verify that playing Strike triggers exactly one sword animation and returns cleanly to the idle loop.
 - [ ] Load Elesis in-game and verify character selection, starter deck, starter relic, energy counter, combat visuals, merchant visuals, rest-site visuals, and localization.
 - [ ] Play through the specialization flow in-game: claim combat XP rewards, trigger the 15 XP branch choice, trigger the 35 XP evolution, and trigger the 55 XP final evolution.
 - [ ] Check that the chosen specialization updates combat, merchant, and rest-site visuals without duplicate events or unsafe map transitions.
 
 ## Proposed Next Work
 
+- [ ] Obtain redistribution permission or replace the local-only TDA Empire Sword model with a redistributable/project-owned rig before publishing the animated asset in a release.
 - [ ] Balance pass 1: test the starter deck and first-act feel, then adjust Counter Attack gain, Burn application, and starter relic values.
 - [ ] Mechanics pass: verify Counter Attack, its retention/amplification Powers, and multi-hit behavior in live combat.
 - [ ] Mechanics pass: verify Burn, direct triggers, alternate decay divisors, propagation, and kill rewards in live combat.

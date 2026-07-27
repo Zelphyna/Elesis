@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Texture2D" path="res://Elesis/images/specializations/saber_knight_path/1_saber_knight/saber_knight.png" id="1_saber"]
+[ext_resource type="Script" path="res://Elesis/scenes/creature_visuals/elesis_combat_sprite.gd" id="2_animation"]
 
 [node name="ElesisSaberKnightCombatVisual" type="Node2D"]
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+script = ExtResource("2_animation")
 texture = ExtResource("1_saber")
 texture_filter = 4
 centered = true

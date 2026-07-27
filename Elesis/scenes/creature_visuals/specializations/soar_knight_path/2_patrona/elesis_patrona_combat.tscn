@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Texture2D" path="res://Elesis/images/specializations/soar_knight_path/2_patrona/patrona.png" id="1_patrona"]
+[ext_resource type="Script" path="res://Elesis/scenes/creature_visuals/elesis_combat_sprite.gd" id="2_animation"]
 
 [node name="ElesisPatronaCombatVisual" type="Node2D"]
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+script = ExtResource("2_animation")
 texture = ExtResource("1_patrona")
 texture_filter = 4
 centered = true

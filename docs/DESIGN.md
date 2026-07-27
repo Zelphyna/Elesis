@@ -3,6 +3,7 @@
 Confirmed design direction:
 
 - Elesis should read as her base Elsword version, not a Grand Chase variant.
+- The local combat-animation prototype is an explicit asset-availability exception: it uses the supplied TDA Empire Sword rig to prove the Godot skeletal pipeline and sword Strike, but does not change the confirmed base-Elesis gameplay identity or authorize the advanced-class model for public redistribution.
 - Avoid advanced Elsword class-path details such as Grand Master, Blazing Heart, Bloody Queen, Empire Sword, or Flame Lord.
 - Visual style should follow `docs/design/ART_DIRECTION.md`: modern clean anime game-art, crisp cel-shading, visible dark outlines, readable silhouettes, moderate controlled detail, controlled crimson as the dominant color, black support tones, light readable silver metal, and restrained warm-gold accents. Avoid excessive gloss, heavy texture, rough painterly rendering, or dense splash-art detail unless the operator explicitly redirects the art style.
 - Gameplay identity should start from sword-focused offense with restrained fire motifs, not from full evolution-class spectacle.
