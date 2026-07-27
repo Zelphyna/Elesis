@@ -21,7 +21,7 @@ public sealed class ElesisStrike() : ElesisCard(1, CardType.Attack, CardRarity.B
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
             .FromCard(this)
             .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_blunt")
+            .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
     }
 

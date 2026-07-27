@@ -6,6 +6,8 @@ bin/
 .vs/
 publish/
 dist/
+.local/
+Elesis/assets/third_party/empire_sword_local/
 Properties/
 packages/
 .editorconfig

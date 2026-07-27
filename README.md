@@ -34,6 +34,35 @@ GODOT_BIN=/mnt/HC_Volume_105232828/shared/tools/godot/godot-4.5.1/Godot_v4.5.1-s
 scripts/package.sh
 ```
 
+## Local Empire Sword Combat Model
+
+The optional animated combat model is generated locally from the `TDA Empire Sword` BowlRoll archive. Its bundled rules allow editing and non-commercial use but prohibit redistributing an edited model. Consequently, the source PMX, converted GLB, extracted textures, Blender file, and generated Godot imports are ignored by Git. Do not publish a PCK or release ZIP containing this model without permission from the model authors.
+
+Confirmed credits from the archive: EUthanaP / EUthana Project, KOG, TDA, YM, Whine_omo, NIN, XueFei, EUthana_EVE, and DCT丶美玲.
+
+Prerequisites:
+
+- Blender `4.5.12` LTS or another version compatible with the converter.
+- [MMD Tools](https://github.com/MMD-Blender/blender_mmd_tools) `v4.5.13` for Blender 4.2+ as a downloaded release ZIP.
+- A legitimately obtained `Empire_Sword.zip` archive.
+
+Generate the local Godot model with:
+
+```sh
+BLENDER_BIN=/path/to/blender \
+scripts/prepare-empire-sword-model.sh \
+  /path/to/Empire_Sword.zip \
+  /path/to/mmd_tools-v4.5.13-bl4.2.zip
+```
+
+The script shows every command, asks before replacing existing local generated files, extracts both PMX models and their textures under `.local/`, attaches the Claymore to Elesis' right wrist, creates `idle` and `attack` skeletal clips, and writes:
+
+```text
+Elesis/assets/third_party/empire_sword_local/empire_sword.glb
+```
+
+Godot imports that local GLB during the normal package flow. When it exists, every Elesis combat scene renders it through a transparent 3D `SubViewport`; Strike plays its `attack` clip. When it is absent, the existing animated 2D sprite remains the fallback. A package containing the local GLB is suitable for personal testing only under the archive's current rules.
+
 ## Project Notes
 
 - Runtime assets live under `Elesis/`.
