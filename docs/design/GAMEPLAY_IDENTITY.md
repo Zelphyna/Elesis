@@ -5,7 +5,7 @@ Use this file for the character's confirmed mechanical identity, archetypes, and
 ## Confirmed Current Identity
 
 - Elesis' class mechanic is Counter Attack.
-- Counter Attack is a visible counter power. When Elesis is attacked, she deals Counter Attack damage back to the attacker once for each hit received.
+- Counter Attack is a visible counter power. When Elesis is attacked, she deals fixed, blockable, unpowered damage equal to Counter Attack back to the attacker once for each hit received.
 - Multi-hit enemy attacks trigger Counter Attack once per hit. For example, 6 Counter Attack returns 6 damage against a single 12-damage hit, and 18 total damage against a 3x3 attack.
 - Enemies that do not attack do not take Counter Attack damage.
 - Counter Attack expires on the same combat timing as normal Block cleanup, after the enemy side has had its chance to attack.
@@ -13,6 +13,9 @@ Use this file for the character's confirmed mechanical identity, archetypes, and
 - The current starter deck uses 4 `ElesisStrike`, 4 `ElesisDefend`, 1 `CounterGuard`, and 1 `BurningEdge`.
 - `CounterGuard` is a 1-cost Skill that gives 6 Counter Attack and upgrades by 3.
 - `BurningEdge` is a 1-cost Skill that applies 5 Burn to an enemy and upgrades by 3.
+- The complete pool contains 88 cards. Its 82-card draftable surface contains 29 Attacks, 35 Skills, and 18 Powers.
+- Cards build three connected archetypes: intent-aware Counter Attack, persistent Burn, and bridge effects that convert or scale one mechanic through the other.
+- The 18 durable Powers cover automatic setup, Block conversion, retaliation, Burn application and decay control, propagation, kill economy, and cross-scaling. No stance or separate fire resource was introduced.
 - Belder Knight Emblem tracks run-local specialization experience. It starts at 0 each run. Combat XP is offered as a selectable post-combat reward: normal combats grant 3 XP, elites grant 4 XP, and bosses grant 6 XP. Non-combat nodes do not grant specialization XP. At 15 XP, once the map is reopened, Elesis chooses a visual specialization path for the rest of the run.
 
 ## Next Mechanics Hypothesis
@@ -21,8 +24,8 @@ These notes are proposed design direction, not confirmed implementation. They sh
 
 - Confirm in-game that Counter Attack expires at the same point as normal Block cleanup in extra-turn and Block-retention edge cases.
 - Confirm that Burn timing fires before enemy attacks in the current STS2 turn sequence.
-- Build future cards around preparing for enemy attack patterns: efficient Counter Attack gains, Block plus Counter Attack, and payoffs for surviving multi-hit turns.
-- Avoid adding unrelated stance, fire, or resource loops until Counter Attack is tested as the primary identity.
+- Playtest the complete pool around enemy attack patterns, Block plus Counter Attack, Burn decay timing, and multi-hit survival before changing numerical targets.
+- Avoid adding unrelated stance, fire-resource, Vitality, Destruction, or Parry loops unless the core identity is explicitly revisited.
 
 ## Item And Relic Hypothesis
 

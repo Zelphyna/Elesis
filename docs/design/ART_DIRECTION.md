@@ -12,8 +12,19 @@ The current baseline for Elesis art is `Elesis/images/versions/elesis-base-profi
 - Use clear cel-shading with firm but limited shadow shapes.
 - Use visible dark outlines on hair, armor, clothing, and the sword.
 - Avoid excessive gloss, heavy texture, painterly rendering, or overly dense official splash-art detail.
-- Unless the operator explicitly asks for a background, all generated mod images should have no background and should be delivered as transparent PNG assets. This applies to character art, relics, map pins, icons, card art, UI pieces, and other generated visual assets.
+- Unless the operator explicitly asks for a background, generated reusable sprites should have no background and should be delivered as transparent PNG assets. Card portraits are the explicit exception: they require an opaque illustrated background because the game supplies the frame separately.
 - Transparent assets must not keep a visible colored outline from background removal. Regenerate or reprocess any image that still has a green, magenta, cyan, or other chroma-key fringe.
+
+### Card Portrait Language
+
+- Card portraits are opaque horizontal illustrations authored at a `25:19` ratio, with runtime outputs at `1000x760` and `250x190`.
+- Do not paint a card frame, banner, cost, title, rules text, number, logo, or other UI into the portrait.
+- Attack portraits use a genuinely crimson/red art background and a diagonal, forceful composition.
+- Skill portraits use a genuinely blue art background and a defensive, circular, stable, or technical composition.
+- Power portraits use a deep plum/violet art background with warm-gold and controlled-crimson accents. Their composition is centered, stable, and emblematic rather than a single impact moment.
+- Keep one primary focal subject and two or three large value masses so the image remains readable at `250x190`.
+- Mix Elesis in action with cropped hands, sword and armor, enemies, objects, environments, consequences, crests, and mechanical metaphors instead of repeating character busts.
+- One portrait is shared by the base and upgraded form of a card; the upgrade changes the game overlay and rules values, not the illustration.
 
 ### Palette
 
@@ -77,4 +88,4 @@ The current baseline for Elesis art is `Elesis/images/versions/elesis-base-profi
 
 ### Design Direction Summary
 
-Elesis base art should read as clean anime game-art: base Elesis, calm right-facing profile when idle, simple forms, moderate detail, crisp cel-shading, dominant red palette, clear silver armor, visible outlines, minimal special effects, and transparent background by default for every generated mod asset unless a background is explicitly requested. This is the primary direction for base-form idle, combat idle, shop, campfire, and other reusable base-form assets.
+Elesis base art should read as clean anime game-art: base Elesis, calm right-facing profile when idle, simple forms, moderate detail, crisp cel-shading, dominant red palette, clear silver armor, visible outlines, and minimal special effects. Reusable sprites are transparent by default; card portraits deliberately use the opaque type-specific backgrounds defined above.

@@ -10,6 +10,8 @@ public abstract class ElesisPower : CustomPowerModel
     public override string CustomPackedIconPath => "power.png".PowerImagePath();
     public override string CustomBigIconPath => "power.png".BigPowerImagePath();
 
+    public void TriggerFlash() => Flash();
+
     public abstract override PowerType Type { get; }
     public abstract override PowerStackType StackType { get; }
 }
