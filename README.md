@@ -34,9 +34,9 @@ GODOT_BIN=/mnt/HC_Volume_105232828/shared/tools/godot/godot-4.5.1/Godot_v4.5.1-s
 scripts/package.sh
 ```
 
-## Local Empire Sword Combat Model
+## Empire Sword Combat Model
 
-The optional animated combat model is generated locally from the `TDA Empire Sword` BowlRoll archive. Its bundled rules allow editing and non-commercial use but prohibit redistributing an edited model. Consequently, the source PMX, converted GLB, extracted textures, Blender file, and generated Godot imports are ignored by Git. Do not publish a PCK or release ZIP containing this model without permission from the model authors.
+The animated combat model was generated from the `TDA Empire Sword` BowlRoll archive. On 2026-07-27, the project operator confirmed that permission had been obtained to redistribute the converted model as part of this mod. The Godot-ready GLB, required textures, and import metadata are therefore tracked and included in release PCKs. The original BowlRoll archive, PMX source files, and local Blender working files remain excluded from Git.
 
 Confirmed credits from the archive: EUthanaP / EUthana Project, KOG, TDA, YM, Whine_omo, NIN, XueFei, EUthana_EVE, and DCT丶美玲.
 
@@ -61,7 +61,7 @@ The script shows every command, asks before replacing existing local generated f
 Elesis/assets/third_party/empire_sword_local/empire_sword.glb
 ```
 
-Godot imports that local GLB during the normal package flow. When it exists, every Elesis combat scene renders it through a transparent 3D `SubViewport`; Strike plays its `attack` clip. When it is absent, the existing animated 2D sprite remains the fallback. A package containing the local GLB is suitable for personal testing only under the archive's current rules.
+Godot imports the tracked GLB during the normal package flow. Every Elesis combat scene renders it through a transparent 3D `SubViewport`; Strike plays its `attack` clip. The existing animated 2D sprite remains a defensive fallback if the model cannot be loaded. See `Elesis/assets/third_party/empire_sword_local/ATTRIBUTION.md` for the retained credits and permission record.
 
 ## Project Notes
 

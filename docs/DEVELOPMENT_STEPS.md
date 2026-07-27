@@ -13,7 +13,7 @@ Last updated: 2026-07-27.
 - [x] Implement a dedicated upgrade for every card and 18 distinct durable card Powers.
 - [x] Generate a dedicated type-coded portrait for every card and retain the full-size generation sources.
 - [x] Add an interim animated combat surface: all Elesis forms breathe while idle and respond to STS2's attack trigger with a sword lunge, swing, and slash arc; Strike uses the slash hit effect.
-- [x] Convert the supplied TDA Empire Sword PMX and Claymore locally through Blender/MMD Tools into a 6.8 MB Godot GLB with a 672-bone skin plus `idle` and `attack` clips; keep every source and derivative ignored under the archive's no-redistribution terms.
+- [x] Convert the supplied TDA Empire Sword PMX and Claymore through Blender/MMD Tools into a 6.8 MB Godot GLB with a 672-bone skin plus `idle` and `attack` clips; track the converted runtime GLB and textures after the project operator confirmed redistribution permission on 2026-07-27, while keeping the source archive, PMX files, and Blender work files local.
 - [x] Render the rigged model inside every combat scene through a transparent `SubViewport`, retain the portrait fallback, and validate the real combat scene's idle, windup, swing, follow-through, and return-to-idle frames under Godot 4.5.1.
 
 ## Next Validation Pass
@@ -27,7 +27,7 @@ Last updated: 2026-07-27.
 
 ## Proposed Next Work
 
-- [ ] Obtain redistribution permission or replace the local-only TDA Empire Sword model with a redistributable/project-owned rig before publishing the animated asset in a release.
+- [x] Obtain redistribution permission for the converted TDA Empire Sword runtime model; permission was confirmed by the project operator on 2026-07-27 and the retained credits are recorded beside the asset.
 - [ ] Balance pass 1: test the starter deck and first-act feel, then adjust Counter Attack gain, Burn application, and starter relic values.
 - [ ] Mechanics pass: verify Counter Attack, its retention/amplification Powers, and multi-hit behavior in live combat.
 - [ ] Mechanics pass: verify Burn, direct triggers, alternate decay divisors, propagation, and kill rewards in live combat.
