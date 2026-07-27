@@ -151,17 +151,14 @@ public sealed class SentenceOfAsh() : ElesisCard(2, CardType.Attack, CardRarity.
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(13m, ValueProp.Move),
-        new DynamicVar("BurnCap", 18m)
+        new DamageVar(13m, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         foreach (var opponent in ElesisMechanics.Opponents(this).Where(opponent => opponent.IsAlive).ToArray())
         {
-            var bonusDamage = Math.Min(
-                ElesisMechanics.BurnAmount(opponent),
-                DynamicVars["BurnCap"].IntValue);
+            var bonusDamage = ElesisMechanics.BurnAmount(opponent);
             await ElesisMechanics.Attack(
                 choiceContext,
                 this,
@@ -173,7 +170,6 @@ public sealed class SentenceOfAsh() : ElesisCard(2, CardType.Attack, CardRarity.
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(5m);
-        DynamicVars["BurnCap"].UpgradeValueBy(9m);
     }
 }
 
