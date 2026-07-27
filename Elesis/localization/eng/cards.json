@@ -128,7 +128,7 @@
   "ELESIS-SCARLET_CROSSFIRE.title": "Scarlet Crossfire",
   "ELESIS-SCARLET_CROSSFIRE.description": "Deal {Damage:diff()} damage {Hits} times. Apply {BurnPower:diff()} [color=#ff8a1f]Burn[/color] after each hit.",
   "ELESIS-SENTENCE_OF_ASH.title": "Sentence of Ash",
-  "ELESIS-SENTENCE_OF_ASH.description": "Deal {Damage:diff()} damage to ALL enemies. Burned enemies take additional damage equal to their [color=#ff8a1f]Burn[/color], up to {BurnCap:diff()}.",
+  "ELESIS-SENTENCE_OF_ASH.description": "Deal {Damage:diff()} damage to ALL enemies. Burned enemies take additional damage equal to their [color=#ff8a1f]Burn[/color].",
   "ELESIS-MIRRORSTEEL_LUNGE.title": "Mirrorsteel Lunge",
   "ELESIS-MIRRORSTEEL_LUNGE.description": "Deal {Damage:diff()} damage. The next {DoubleCounterPower:diff()} attack hits before your next turn trigger [blue]Counter Attack[/blue] twice.",
   "ELESIS-LASTING_SCAR.title": "Lasting Scar",
