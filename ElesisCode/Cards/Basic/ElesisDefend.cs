@@ -1,7 +1,6 @@
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using Elesis.ElesisCode.Character;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -19,7 +18,7 @@ public sealed class ElesisDefend() : ElesisCard(1, CardType.Skill, CardRarity.Ba
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        await ElesisMechanics.GainBlock(choiceContext, this, cardPlay, DynamicVars.Block.BaseValue);
     }
 
     protected override void OnUpgrade()

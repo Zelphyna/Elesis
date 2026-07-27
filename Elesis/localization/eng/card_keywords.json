@@ -1,6 +1,6 @@
 {
   "ELESIS-COUNTERATTACK.title": "Counter Attack",
-  "ELESIS-COUNTERATTACK.description": "When Elesis is attacked, deal that much damage back to the attacker once for each hit received.",
+  "ELESIS-COUNTERATTACK.description": "When Elesis is attacked, deal fixed, blockable damage equal to your Counter Attack back to the attacker once for each hit received. Counter Attack expires at Block cleanup.",
   "ELESIS-BURN.title": "Burn",
-  "ELESIS-BURN.description": "Before a monster acts, it takes damage equal to its Burn, then loses half of its Burn, rounded up."
+  "ELESIS-BURN.description": "Before a monster acts, it takes unblockable damage equal to its Burn, then loses half of its Burn, rounded up."
 }
