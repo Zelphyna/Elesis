@@ -465,25 +465,24 @@ public sealed class SmolderingGuardPower : ElesisBuffPower
 
 public sealed class AggressorBrandPower : ElesisDebuffPower
 {
-    public override async Task AfterDamageGiven(
-        PlayerChoiceContext choiceContext,
-        Creature? dealer,
-        DamageResult result,
-        ValueProp props,
-        Creature target,
-        CardModel? cardSource)
+    public override async Task AfterAttack(PlayerChoiceContext choiceContext, AttackCommand command)
     {
-        if (dealer != Owner ||
-            result.TotalDamage <= 0 ||
+        if (command.Attacker != Owner ||
             Applier is null ||
-            target.Side == Owner.Side ||
-            !props.IsPoweredAttack())
+            !command.DamageProps.IsPoweredAttack())
         {
             return;
         }
 
-        Flash();
-        await ElesisMechanics.ApplyBurn(choiceContext, Owner, Amount, Applier, null);
+        var hitCount = command.Results
+            .SelectMany(results => results)
+            .Count(result => result.TotalDamage > 0 && result.Receiver.Side != Owner.Side);
+
+        for (var hit = 0; hit < hitCount && Owner.IsAlive; hit++)
+        {
+            Flash();
+            await ElesisMechanics.ApplyBurn(choiceContext, Owner, Amount, Applier, null);
+        }
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
