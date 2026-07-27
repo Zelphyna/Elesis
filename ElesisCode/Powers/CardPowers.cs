@@ -360,7 +360,6 @@ public sealed class BurnStabilizerPower : ElesisDebuffPower;
 
 public sealed class SealedCounterPower : ElesisBuffPower
 {
-    protected override bool IsVisibleInternal => false;
     public override PowerStackType StackType => PowerStackType.Single;
 
     public override async Task AfterBlockCleared(Creature creature)
